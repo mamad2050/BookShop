@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Book Shop</string>
+
+    <string name="online_book_store">Online Book Store</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_categories">Categories</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_profile">Profile</string>
+</resources>

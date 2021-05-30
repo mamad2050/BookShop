@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">فروشگاه کتاب</string>
+
+    <string name="online_book_store">فروشگاه آنلاین کتاب</string>
+    <string name="nav_home">خانه</string>
+    <string name="nav_categories">دسته بندی ها</string>
+    <string name="nav_search">جست و جو</string>
+    <string name="nav_profile">حساب من</string>
+
+
+</resources>
