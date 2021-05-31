@@ -1,4 +1,4 @@
-package com.example.bookshop.Banner;
+package com.example.bookshop.Model;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;

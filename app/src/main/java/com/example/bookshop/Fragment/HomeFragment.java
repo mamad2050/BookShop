@@ -2,55 +2,58 @@ package com.example.bookshop.Fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Adapter.CategoryAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
-import com.example.bookshop.Banner.Banner;
+import com.example.bookshop.Model.Banner;
 import com.example.bookshop.Global.Constants;
+import com.example.bookshop.Model.Category;
 import com.example.bookshop.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 
 public class HomeFragment extends Fragment {
 
     private static final String TAG = "Error";
+    RequestQueue requestQueue;
     View view;
+
+    /*Slider*/
     List<Banner> banners = new ArrayList<>();
     SliderAdapter sliderAdapter;
     ViewPager slider;
     TabLayout tabs;
-    final int paddingPx = 25;
+    final int paddingPx = 80;
     final float MIN_SCALE = 0.8f;
     final float MAX_SCALE = 1f;
 
 
-    RequestQueue requestQueue;
+    /*Category*/
+    List<Category> categories = new ArrayList<>();
+    CategoryAdapter categoryAdapter;
+    RecyclerView recyclerViewCategory;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +61,7 @@ public class HomeFragment extends Fragment {
 
         initialize();
         getBanner_response();
+        getCategories();
 
         return view;
     }
@@ -66,15 +70,37 @@ public class HomeFragment extends Fragment {
 
         requestQueue = Volley.newRequestQueue(getContext());
 
+        /*Slider*/
         slider = view.findViewById(R.id.viewPager);
         tabs = view.findViewById(R.id.tabs);
         sliderAdapter = new SliderAdapter(getContext(), banners);
         slider.setAdapter(sliderAdapter);
-        slider.setRotationY(180);
         tabs.setupWithViewPager(slider, true);
 
+        /*Category*/
+        recyclerViewCategory = view.findViewById(R.id.recyclerView_category);
+        recyclerViewCategory.setHasFixedSize(true);
+        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+        categoryAdapter = new CategoryAdapter(getContext(), categories);
+        recyclerViewCategory.setAdapter(categoryAdapter);
 
-        setAnimationForSlider();
+    }
+
+    private void getCategories() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_CATEGORY,
+                response -> {
+
+                    Gson gson = new Gson();
+                    Category[] arrayCategories = gson.fromJson(response,Category[].class);
+                    categories.addAll(Arrays.asList(arrayCategories));
+                    categoryAdapter.notifyDataSetChanged();
+
+
+                }, error -> Log.e(TAG, "getCategories: " + error.getMessage()));
+
+        requestQueue.add(stringRequest);
 
     }
 
@@ -90,9 +116,10 @@ public class HomeFragment extends Fragment {
         }, error -> Log.e(TAG, "onErrorResponse: " + error.getMessage()));
 
         requestQueue.add(stringRequest);
+
+        setAnimationForSlider();
+
     }
-
-
 
     private void setAnimationForSlider() {
 
