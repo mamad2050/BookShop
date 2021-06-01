@@ -11,11 +11,16 @@
     <string name="home_fragment_offer_textView">زمان باقیمانده تااتمام پیشنهاد های شگفت انگیز</string>
     <string name="nav_shopping_cart">سبد خرید</string>
     <string name="login_text">ورود</string>
-    <string name="login_card_header_texx">در صورتی که حساب کاربری ندارید ، بر روی ساخت حساب کاربری جدید کلیک کنید</string>
+    <string name="login_card_header_text">در صورتی که حساب کاربری ندارید ، بر روی ساخت حساب کاربری جدید کلیک کنید</string>
     <string name="username">نام کاربری</string>
     <string name="password">رمز عبور</string>
-    <string name="login">ورود به حساب کاربری</string>
+    <string name="login_btn_text">ورود به حساب کاربری</string>
     <string name="new_account">ساخت حساب کاربری جدید</string>
+    <string name="register">ثبت نام</string>
+    <string name="register_card_header_text">در صورتی که حساب کاربری دارید ، بر روی ورود به حساب کاربری  کلیک کنید</string>
+    <string name="register_btn_txt">ثبت نام</string>
+    <string name="mail">ایمیل</string>
+    <string name="phone">تلفن همراه</string>
 
 
 </resources>
