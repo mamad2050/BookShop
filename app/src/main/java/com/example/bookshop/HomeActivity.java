@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.bookshop.Fragment.CategoryFragment;
 import com.example.bookshop.Fragment.HomeFragment;
@@ -14,16 +17,20 @@ import com.example.bookshop.Fragment.ProfileFragment;
 import com.example.bookshop.Fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
-
+    public static String defSystemLocale;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        defSystemLocale= Locale.getDefault().getLanguage();
         setContentView(R.layout.activity_home);
-
+        Toast.makeText(this, defSystemLocale, Toast.LENGTH_SHORT).show();
         initialize();
         HomeFragment homeFragment = new HomeFragment();
         setFragment(homeFragment);
@@ -37,6 +44,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -74,4 +82,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        defSystemLocale  = newConfig.locale.getLanguage();
+    }
 }

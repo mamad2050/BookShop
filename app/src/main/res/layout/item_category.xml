@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
 
     android:padding="8dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="60dp">
+        app:cardCornerRadius="6dp">
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
+
                 android:id="@+id/item_category_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -30,15 +33,15 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:layout_centerHorizontal="true"
+
         android:id="@+id/item_category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/card"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/iransans_black"
         android:text="زبان انگلیسی"
         android:textSize="12sp"
         android:textStyle="bold" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -10,9 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.Category;
 import com.example.bookshop.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,13 +32,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.item_category, parent, false);
+
         return new Holder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.name_category.setText(categories.get(position).getName());
-        Picasso.get().load(categories.get(position).getLink_img()).into(holder.img_category);
+
+        if (HomeActivity.defSystemLocale.equals("fa")) {
+            holder.name_category.setText(categories.get(position).getName_fa());
+        }else {
+            holder.name_category.setText(categories.get(position).getName_en());
+        }
+
+
+        Glide.with(context).load(categories.get(position).getLink_img())
+                .centerCrop().into(holder.img_category);
     }
 
     @Override

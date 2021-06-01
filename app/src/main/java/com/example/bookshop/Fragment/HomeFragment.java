@@ -44,9 +44,6 @@ public class HomeFragment extends Fragment {
     SliderAdapter sliderAdapter;
     ViewPager slider;
     TabLayout tabs;
-    final int paddingPx = 80;
-    final float MIN_SCALE = 0.8f;
-    final float MAX_SCALE = 1f;
 
 
     /*Category*/
@@ -93,7 +90,7 @@ public class HomeFragment extends Fragment {
                 response -> {
 
                     Gson gson = new Gson();
-                    Category[] arrayCategories = gson.fromJson(response,Category[].class);
+                    Category[] arrayCategories = gson.fromJson(response, Category[].class);
                     categories.addAll(Arrays.asList(arrayCategories));
                     categoryAdapter.notifyDataSetChanged();
 
@@ -119,10 +116,13 @@ public class HomeFragment extends Fragment {
 
         setAnimationForSlider();
 
+
     }
 
     private void setAnimationForSlider() {
-
+        final int paddingPx = 180;
+        final float MIN_SCALE = 0.8f;
+        final float MAX_SCALE = 1f;
         slider.setClipToPadding(false);
         slider.setPadding(paddingPx, 0, paddingPx, 0);
 
@@ -151,6 +151,46 @@ public class HomeFragment extends Fragment {
         };
 
         slider.setPageTransformer(false, transformer);
+
+        setThreadForSlider();
+
+    }
+
+    private void setThreadForSlider() {
+
+        final boolean running_thread = true;
+        final int sleepDuration = 4000;
+
+        Thread thread = new Thread() {
+
+            @Override
+            public void run() {
+
+                while (running_thread) {
+
+                    try {
+                        Thread.sleep(sleepDuration);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (getActivity() == null)
+                        return;
+
+
+                    getActivity().runOnUiThread(() -> {
+
+                        if (slider.getCurrentItem() < banners.size() - 1)
+                            slider.setCurrentItem(slider.getCurrentItem() + 1);
+
+                        else
+                            slider.setCurrentItem(0);
+                    });
+                }
+
+            }
+        };
+        thread.start();
     }
 
 }
