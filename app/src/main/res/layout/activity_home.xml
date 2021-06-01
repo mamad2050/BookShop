@@ -8,10 +8,11 @@
     tools:context=".HomeActivity">
 
     <RelativeLayout
+
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        android:background="@color/toolBarColor"
         android:elevation="2dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,14 +21,11 @@
 
         <TextView
             android:id="@+id/txt_shop_name"
+            style="@style/toolbarTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/iransans_black"
-            android:text="@string/online_book_store"
-
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:text="@string/online_book_store" />
 
 
     </RelativeLayout>
@@ -49,13 +47,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
-        android:background="#ffffff"
+        android:background="@color/toolBarColor"
+        android:elevation="10dp"
         app:elevation="100dp"
-        app:itemIconTint="@color/black"
-        app:itemRippleColor="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemRippleColor="@color/white"
         app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
