@@ -7,7 +7,7 @@
     </style>
 
     <style name="toolbarTitleStyle">
-        <item name="android:fontFamily">@font/iransans_black</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
@@ -15,7 +15,17 @@
 
     <style name="titleStyle">
         <item name="android:fontFamily">@font/iransans_black</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="valueOfferTextViewStyle">
+        <item name="android:fontFamily">@font/iransans</item>
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="buttonStyle">
@@ -33,7 +43,6 @@
     </style>
 
 
-
     <style name="Theme.BookShop" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -45,6 +54,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">@font/iransans</item>
         <!-- Customize your theme here. -->
     </style>
 

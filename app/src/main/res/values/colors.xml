@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="toolBarColor">@color/colorPrimary</color>
     <color name="editText_textColor">@color/black</color>
+    <color name="bookPriceColor">#4A974D</color>
+
 </resources>

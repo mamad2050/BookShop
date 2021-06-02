@@ -23,9 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:fontFamily="@font/iransans_black"
             android:gravity="center_horizontal"
-            android:text="@string/register" />
+            android:text="@string/register_activity_toolbar" />
 
 
     </RelativeLayout>
@@ -39,6 +38,7 @@
         app:cardElevation="2dp">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -49,23 +49,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:lineSpacingExtra="4dp"
-                android:text="@string/register_card_header_text" />
+                android:text="@string/register_card_header"
+                android:textDirection="locale" />
 
 
             <EditText
-
-                android:id="@+id/loginActivity_edt_user"
+                android:id="@+id/registerActivity_edt_user"
                 style="@style/editTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
                 android:drawableStart="@drawable/ic_baseline_person_24"
-                android:hint="@string/username" />
+                android:drawablePadding="8dp"
+                android:hint="@string/username"
+                android:textDirection="locale" />
 
             <EditText
+
                 android:id="@+id/registerActivity_edt_mail"
                 style="@style/editTextStyle"
                 android:layout_width="match_parent"
@@ -73,7 +76,9 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
                 android:drawableStart="@drawable/ic_baseline_email_24"
-                android:hint="@string/mail" />
+                android:drawablePadding="8dp"
+                android:hint="@string/mail"
+                android:textDirection="locale" />
 
             <EditText
                 android:id="@+id/registerActivity_edt_phone"
@@ -83,26 +88,35 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
                 android:drawableStart="@drawable/ic_baseline_local_phone_24"
-                android:hint="@string/phone" />
+                android:drawablePadding="8dp"
+                android:hint="@string/phone"
+                android:textDirection="locale" />
 
-            <EditText
-                android:id="@+id/RegisterActivity_edt_password"
-                style="@style/editTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
-                android:hint="@string/password" />
+
+
+
+                <EditText
+                    android:textDirection="locale"
+                    android:id="@+id/registerActivity_edt_password"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/password"
+                    />
+
 
 
             <Button
-                android:id="@+id/register_btn"
+                android:id="@+id/registerActivity_btn"
                 style="@style/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="48dp"
-                android:text="@string/register_btn_txt" />
+                android:text="@string/register_btn" />
 
 
             <TextView
@@ -112,7 +126,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/login_btn_text" />
+                android:text="@string/login_btn" />
 
         </LinearLayout>
 

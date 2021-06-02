@@ -8,15 +8,15 @@
     <string name="nav_profile">Profile</string>
     <string name="home_fragment_offer_textView">Remaining time until all the amazing offers</string>
     <string name="nav_shopping_cart">Shopping Cart</string>
-    <string name="login_text">login</string>
-    <string name="login_card_header_text">If you do not have an account , Click Create a new account</string>
+    <string name="login_activity_toolbar">login</string>
+    <string name="login_card_header">If you do not have an account , Click Create a new account</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="login_btn_text">Login</string>
+    <string name="login_btn">Login</string>
     <string name="new_account">Create new Account</string>
-    <string name="register">Register</string>
-    <string name="register_card_header_text">If you have an account, click on Login</string>
-    <string name="register_btn_txt">Register</string>
+    <string name="register_activity_toolbar">Register</string>
+    <string name="register_card_header">If you have an account, click on Login</string>
+    <string name="register_btn">Register</string>
     <string name="mail">Mail</string>
     <string name="phone">Phone</string>
 </resources>

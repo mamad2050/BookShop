@@ -14,15 +14,17 @@ import android.view.ViewGroup;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Adapter.BookOfferAdapter;
 import com.example.bookshop.Adapter.CategoryAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
+import com.example.bookshop.Model.BookOffer;
+import com.example.bookshop.Model.Offer;
 import com.example.bookshop.Model.Banner;
 import com.example.bookshop.Global.Constants;
 import com.example.bookshop.Model.Category;
+import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -30,7 +32,6 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 
 public class HomeFragment extends Fragment {
@@ -51,14 +52,20 @@ public class HomeFragment extends Fragment {
     CategoryAdapter categoryAdapter;
     RecyclerView recyclerViewCategory;
 
+    /*Book Offer*/
+    List<Offer> listOffer = new ArrayList<>();
+    BookOfferAdapter bookOfferAdapter;
+    RecyclerView recyclerViewBookOffer;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
         initialize();
-        getBanner_response();
-        getCategories();
+        getBannersResponse();
+        getCategoriesResponse();
+        getBookOfferResponse();
 
         return view;
     }
@@ -67,14 +74,14 @@ public class HomeFragment extends Fragment {
 
         requestQueue = Volley.newRequestQueue(getContext());
 
-        /*Slider*/
+        /*Initialize Slider View Pager*/
         slider = view.findViewById(R.id.viewPager);
         tabs = view.findViewById(R.id.tabs);
         sliderAdapter = new SliderAdapter(getContext(), banners);
         slider.setAdapter(sliderAdapter);
         tabs.setupWithViewPager(slider, true);
 
-        /*Category*/
+        /*Initialize Category Recycler View*/
         recyclerViewCategory = view.findViewById(R.id.recyclerView_category);
         recyclerViewCategory.setHasFixedSize(true);
         recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),
@@ -82,9 +89,22 @@ public class HomeFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(getContext(), categories);
         recyclerViewCategory.setAdapter(categoryAdapter);
 
+
+        /*Initialize Book Offer RecyclerView*/
+        recyclerViewBookOffer = view.findViewById(R.id.homeFragment_recyclerView_bookOffer);
+        recyclerViewBookOffer.setHasFixedSize(true);
+        recyclerViewBookOffer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        /*First Object Item For Book Offer Recycler View*/
+        FirstItemOffer firstItemOffer = new FirstItemOffer( "مشاهده همه >", "https://www.digikala.com/static/files/63494995.png");
+        listOffer.add(new Offer(1, firstItemOffer));
+
+        bookOfferAdapter = new BookOfferAdapter(getContext(), listOffer);
+        recyclerViewBookOffer.setAdapter(bookOfferAdapter);
+
     }
 
-    private void getCategories() {
+    private void getCategoriesResponse() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_CATEGORY,
                 response -> {
@@ -101,7 +121,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void getBanner_response() {
+    private void getBannersResponse() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_BANNER_SLIDER, response -> {
             Gson gson = new Gson();
@@ -191,6 +211,24 @@ public class HomeFragment extends Fragment {
             }
         };
         thread.start();
+    }
+
+    private void getBookOfferResponse(){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_BOOK_OFFER, response -> {
+            Gson gson = new Gson();
+            BookOffer[] arrayBookOffer = gson.fromJson(response, BookOffer[].class);
+
+            for (BookOffer bookOffer : arrayBookOffer) {
+                listOffer.add(new Offer(0, (BookOffer) bookOffer));
+            }
+            bookOfferAdapter.notifyDataSetChanged();
+
+        }, error -> Log.e(TAG, "onErrorResponse: " + error.getMessage()));
+
+        requestQueue.add(stringRequest);
+
+
     }
 
 }
