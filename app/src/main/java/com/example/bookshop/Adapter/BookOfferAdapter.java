@@ -95,7 +95,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public void setFirstItem(FirstItemOffer firstItemOffer) {
 
             txt_title_firstAmazing.setText(firstItemOffer.getTitle());
-            Picasso.get().load(R.drawable.offers).into(img_firstAmazing);
+            Picasso.get().load(firstItemOffer.getLink_img()).into(img_firstAmazing);
 
         }
 

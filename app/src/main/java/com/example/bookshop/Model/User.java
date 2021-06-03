@@ -1,41 +1,16 @@
 package com.example.bookshop.Model;
 
 public class User {
-    private String id, firstName, lastName, username, email, password, password2;
+    private String  username, email, password1, password2;
 
-    public User(String id, String firstName, String lastName, String username, String email, String password, String password2) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+
+    public User(String username, String email, String password1, String password2) {
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.password1 = password1;
         this.password2 = password2;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getUsername() {
         return username;
@@ -53,12 +28,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword1() {
+        return password1;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword1(String password1) {
+        this.password1 = password1;
     }
 
     public String getPassword2() {

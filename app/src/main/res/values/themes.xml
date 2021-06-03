@@ -20,7 +20,7 @@
     </style>
 
     <style name="discountStyle">
-        <item name="android:fontFamily">@font/iransans_black</item>
+        <item name="android:fontFamily">@font/iranyekanextrabold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">10sp</item>
         <item name="android:gravity">center</item>

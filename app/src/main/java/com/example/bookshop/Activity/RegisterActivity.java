@@ -9,10 +9,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.request.RequestCoordinator;
 import com.example.bookshop.Api.ApiClient;
 import com.example.bookshop.Api.ApiInterface;
 import com.example.bookshop.Model.User;
 import com.example.bookshop.R;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
     String baseUrl = "http://scusad-bookshoponline.fandogh.cloud/api/rest-auth/";
 
     private static final String TAG = "RegisterActivity";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,43 +54,51 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.registerActivity_edt_password);
         phoneEditText = findViewById(R.id.registerActivity_edt_phone);
         registerBTN = findViewById(R.id.registerActivity_btn);
-        request=ApiClient.getRetrofit(baseUrl).create(ApiInterface.class);
+        request = ApiClient.getRetrofit(baseUrl).create(ApiInterface.class);
 
     }
 
     private void register() {
 
 
+        registerBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        String username = usernameEditText.getText().toString().trim();
-        String email = mailEditText.getText().toString().trim();
-        String password1 = passwordEditText.getText().toString().trim();
-        String password2 = passwordEditText.getText().toString().trim();
-        String phone = phoneEditText.getText().toString().trim();
+                String username = usernameEditText.getText().toString().trim();
+                String email = mailEditText.getText().toString().trim();
+                String password1 = passwordEditText.getText().toString().trim();
+                String password2 = passwordEditText.getText().toString().trim();
+                String phone = phoneEditText.getText().toString().trim();
 
-     registerBTN.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
+                User user = new User(username, email, password1, password2);
 
-             Call<User> userCall = request.register(username,password1,password2);
+                Call<User>userCall = request.register(user);
+                String json = new Gson().toJson(user,User.class);
+                userCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
 
-             userCall.enqueue(new Callback<User>() {
+                        if (!response.isSuccessful()){
+                            Toast.makeText(RegisterActivity.this, "Not Successful", Toast.LENGTH_SHORT).show();
+                            return;
+                        }else{
 
-                 @Override
-                 public void onResponse(Call<User> call, Response<User> response) {
+                            Toast.makeText(RegisterActivity.this, "ok", Toast.LENGTH_SHORT).show();
+                        }
 
-                     Toast.makeText(RegisterActivity.this, response.message(), Toast.LENGTH_LONG).show();
-                 }
 
-                 @Override
-                 public void onFailure(Call<User> call, Throwable t) {
-                     Toast.makeText(RegisterActivity.this, "", Toast.LENGTH_LONG).show();
-                     Log.e(TAG, "onFailure: "+t.getMessage() );
-                 }
-             });
+                    }
 
-         }
-     });
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+            }
+        });
 
     }
 }
