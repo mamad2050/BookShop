@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
     android:layout_height="300dp"
     android:layout_marginStart="16dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
     android:textDirection="locale"
     app:cardCornerRadius="8dp">
 
@@ -30,38 +29,36 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/item_book_offer_img"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:maxLines="2"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
             tools:text="Klara and the Sun" />
 
         <TextView
-
             android:id="@+id/item_book_offer_discount_txt"
-            style="@style/valueOfferTextViewStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_book_offer_bookName_txt"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bg_txt_value_off"
-            android:textStyle="bold|italic"
+            android:background="@drawable/bg_txt_discount"
+           style="@style/discountStyle"
             tools:text="30%" />
 
         <TextView
-            android:layout_width="wrap_content"
+
             android:id="@+id/item_book_offer_finalPrice_txt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_book_offer_bookName_txt"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:textColor="@color/bookPriceColor"
-            android:textSize="12sp"
+            android:layout_marginEnd="8dp"
+           android:textColor="@color/black"
+            android:textSize="13sp"
             android:textStyle="bold"
             tools:text="25,000" />
 
@@ -71,11 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_book_offer_finalPrice_txt"
+            android:layout_alignStart="@id/item_book_offer_finalPrice_txt"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:textColor="#ED2341"
+            android:layout_marginEnd="8dp"
             android:textSize="12sp"
             android:textStyle="bold"
             tools:text="41,000" />

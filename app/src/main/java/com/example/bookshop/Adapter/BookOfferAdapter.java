@@ -1,5 +1,6 @@
 package com.example.bookshop.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -14,19 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookshop.Global.DecimalFormatter;
 import com.example.bookshop.Model.Offer;
 import com.example.bookshop.Model.BookOffer;
 import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.R;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 
 public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-     Context context;
+    Context context;
     List<Offer> data;
 
     public BookOfferAdapter(Context context, List<Offer> data) {
@@ -78,7 +79,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     /*View Holder For First Item RecyclerView*/
-    public  class FirstItemViewHolder extends RecyclerView.ViewHolder {
+    public class FirstItemViewHolder extends RecyclerView.ViewHolder {
 
         ImageView img_firstAmazing;
         TextView txt_title_firstAmazing;
@@ -94,7 +95,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public void setFirstItem(FirstItemOffer firstItemOffer) {
 
             txt_title_firstAmazing.setText(firstItemOffer.getTitle());
-            Picasso.get().load(firstItemOffer.getLink_img()).into(img_firstAmazing);
+            Picasso.get().load(R.drawable.offers).into(img_firstAmazing);
 
         }
 
@@ -102,7 +103,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     /*View Holder for Book Offer */
-    public  class BookOfferViewHolder extends RecyclerView.ViewHolder {
+    public class BookOfferViewHolder extends RecyclerView.ViewHolder {
         TextView txt_discount, txt_price, txt_bookName, txt_final_price;
         ImageView img_book;
 
@@ -116,20 +117,25 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             img_book = itemView.findViewById(R.id.item_book_offer_img);
         }
 
+        @SuppressLint("SetTextI18n")
         public void setBookOfferItems(BookOffer bookOffer) {
 
-
-            DecimalFormat decimalFormat = new DecimalFormat("###,###");
-            String price = decimalFormat.format(Integer.valueOf(bookOffer.getPrice()));
             txt_bookName.setText(bookOffer.getName());
 
-            txt_discount.setText(bookOffer.getDiscount() + "%");
-            txt_final_price.setText(bookOffer.getFinal_price());
 
-            SpannableString spannableString = new SpannableString(price);
-            spannableString.setSpan(new StrikethroughSpan(),0,bookOffer.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            int discount = Integer.parseInt(bookOffer.getDiscount());
+            txt_discount.setText(DecimalFormatter.formatted(discount)+"%");
+
+            /*set Final Price*/
+            int finalPrice = Integer.parseInt(bookOffer.getFinal_price());
+            txt_final_price.setText(DecimalFormatter.formatted(finalPrice) + " تومان");
+
+
+            /*Scratch Original Price*/
+            int price = Integer.parseInt(bookOffer.getPrice());
+            SpannableString spannableString = new SpannableString(DecimalFormatter.formatted(price));
+            spannableString.setSpan(new StrikethroughSpan(), 0, bookOffer.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             txt_price.setText(spannableString);
-
 
             Glide.with(context).load(bookOffer.getLink_img()).into(img_book);
 
