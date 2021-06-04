@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.bookshop.Adapter.BookOfferAdapter;
 import com.example.bookshop.Adapter.CategoryAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
+import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.BookOffer;
 import com.example.bookshop.Model.Offer;
 import com.example.bookshop.Model.Banner;
@@ -79,6 +80,9 @@ public class HomeFragment extends Fragment {
         tabs = view.findViewById(R.id.tabs);
         sliderAdapter = new SliderAdapter(getContext(), banners);
         slider.setAdapter(sliderAdapter);
+        if (HomeActivity.defSystemLocale.equals("fa")) {
+            slider.setRotationY(180);
+        }
         tabs.setupWithViewPager(slider, true);
 
         /*Initialize Category Recycler View*/

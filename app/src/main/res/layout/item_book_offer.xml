@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
     android:layout_height="300dp"
-    android:layout_marginStart="16dp"
+    android:layout_marginStart="8dp"
     android:layout_marginTop="20dp"
+    android:layout_marginEnd="8dp"
     android:layout_marginBottom="20dp"
     android:textDirection="locale"
     app:cardCornerRadius="8dp">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <ImageView
             android:id="@+id/item_book_offer_img"
@@ -38,45 +37,41 @@
 
         <TextView
             android:id="@+id/item_book_offer_discount_txt"
+            style="@style/discountStyle"
             android:layout_width="36dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_book_offer_bookName_txt"
             android:layout_alignParentStart="true"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_txt_discount"
-           android:fontFamily="@font/iranyekanextrabold"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold"
+            android:gravity="center"
             tools:text="30%" />
 
         <TextView
 
             android:id="@+id/item_book_offer_finalPrice_txt"
+            style="@style/priceStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_book_offer_bookName_txt"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
-           android:textColor="@color/black"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             tools:text="25,000" />
+
 
         <TextView
 
             android:id="@+id/item_book_offer_price_txt"
+            style="@style/priceStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_book_offer_finalPrice_txt"
             android:layout_alignStart="@id/item_book_offer_finalPrice_txt"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp"
-            android:textSize="12sp"
-            android:textStyle="bold"
             tools:text="41,000" />
 
     </RelativeLayout>

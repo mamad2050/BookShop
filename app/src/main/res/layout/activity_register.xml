@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:drawableStart="@drawable/person"
                 android:drawablePadding="8dp"
                 android:hint="@string/username"
                 android:textDirection="locale" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/ic_baseline_email_24"
+                android:drawableStart="@drawable/email"
                 android:drawablePadding="8dp"
                 android:hint="@string/mail"
                 android:textDirection="locale" />
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/ic_baseline_local_phone_24"
+                android:drawableStart="@drawable/phone"
                 android:drawablePadding="8dp"
                 android:hint="@string/phone"
                 android:textDirection="locale" />
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/bg_edittext"
-                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawableStart="@drawable/lock"
                     android:drawablePadding="8dp"
                     android:hint="@string/password"
                     />

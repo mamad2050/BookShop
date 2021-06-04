@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     private void initialize() {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setItemIconTintList(null);
 
     }
 
@@ -78,7 +79,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void setFragment(Fragment fragment) {
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
+                .replace(R.id.container, fragment).commit();
 
     }
 

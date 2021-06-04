@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:drawableStart="@drawable/person"
                 android:hint="@string/username" />
 
             <EditText
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawableStart="@drawable/lock"
                 android:hint="@string/password" />
 
 

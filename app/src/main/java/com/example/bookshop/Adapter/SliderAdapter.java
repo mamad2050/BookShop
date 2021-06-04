@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.Banner;
 import com.example.bookshop.R;
 import com.squareup.picasso.Picasso;
@@ -33,6 +34,10 @@ public class SliderAdapter extends PagerAdapter {
         ImageView img_slider = view.findViewById(R.id.img_slider);
         Picasso.get().load(banners.get(position).getLink_img()).into(img_slider);
         container.addView(view);
+
+        if (HomeActivity.defSystemLocale.equals("fa")) {
+            view.setRotationY(180);
+        }
         return view;
     }
 
