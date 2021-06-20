@@ -88,5 +88,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         defSystemLocale  = newConfig.locale.getLanguage();
+
     }
 }

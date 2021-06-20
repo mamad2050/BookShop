@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.Banner;
 import com.example.bookshop.R;
@@ -32,7 +33,7 @@ public class SliderAdapter extends PagerAdapter {
 
         View view = LayoutInflater.from(context).inflate(R.layout.item_slider, container, false);
         ImageView img_slider = view.findViewById(R.id.img_slider);
-        Picasso.get().load(banners.get(position).getLink_img()).into(img_slider);
+        Glide.with(context).load(banners.get(position).getLink_img()).into(img_slider);
         container.addView(view);
 
         if (HomeActivity.defSystemLocale.equals("fa")) {

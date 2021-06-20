@@ -16,18 +16,18 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/item_book_offer_img"
+            android:id="@+id/item_book_news_img"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:layout_marginTop="8dp" />
 
         <TextView
 
-            android:id="@+id/item_book_offer_bookName_txt"
+            android:id="@+id/item_book_news_bookName_txt"
             style="@style/titleStyle"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/item_book_offer_img"
+            android:layout_below="@id/item_book_news_img"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -35,29 +35,15 @@
             android:maxLines="2"
             tools:text="Klara and the Sun" />
 
-        <TextView
-            android:id="@+id/item_book_offer_discount_txt"
-            style="@style/discountStyle"
-            android:layout_width="36dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/item_book_offer_bookName_txt"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_txt_discount"
-            android:gravity="center"
-            tools:text="30%" />
-
         <LinearLayout
-            android:id="@+id/price_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/item_book_offer_bookName_txt"
+            android:layout_below="@id/item_book_news_bookName_txt"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp">
 
             <TextView
-                android:id="@+id/item_book_offer_finalPrice_txt"
+                android:id="@+id/item_book_news_finalPrice_txt"
                 style="@style/priceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,6 +53,8 @@
                 tools:text="25,000" />
 
             <TextView
+                android:textColor="@color/black"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -74,18 +62,6 @@
 
         </LinearLayout>
 
-
-        <TextView
-
-            android:id="@+id/item_book_offer_price_txt"
-            style="@style/priceStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/price_layout"
-            android:layout_alignStart="@id/price_layout"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
-            tools:text="41,000" />
 
     </RelativeLayout>
 

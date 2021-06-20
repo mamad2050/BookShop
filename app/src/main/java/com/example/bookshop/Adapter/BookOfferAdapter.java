@@ -2,6 +2,8 @@ package com.example.bookshop.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.fonts.Font;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -96,7 +98,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public void setFirstItem(FirstItemOffer firstItemOffer) {
 
             txt_title_firstAmazing.setText(firstItemOffer.getTitle());
-            Picasso.get().load(firstItemOffer.getLink_img()).into(img_firstAmazing);
+            Glide.with(context).load(R.drawable.offer).into(img_firstAmazing);
 
         }
 
@@ -125,11 +127,11 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
             int discount = Integer.parseInt(bookOffer.getDiscount());
-            txt_discount.setText(DecimalFormatter.formatted(discount)+"%");
+            txt_discount.setText(DecimalFormatter.formatted(discount) + "%");
 
             /*set Final Price*/
             int finalPrice = Integer.parseInt(bookOffer.getFinal_price());
-            txt_final_price.setText(DecimalFormatter.formatted(finalPrice) + " تومان");
+            txt_final_price.setText(DecimalFormatter.formatted(finalPrice) );
 
 
             /*Scratch Original Price*/

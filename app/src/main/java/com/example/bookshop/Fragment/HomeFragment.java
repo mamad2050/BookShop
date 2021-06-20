@@ -3,6 +3,7 @@ package com.example.bookshop.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookshop.Adapter.BookOfferAdapter;
 import com.example.bookshop.Adapter.CategoryAdapter;
+import com.example.bookshop.Adapter.SecondBannerAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
 import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.BookOffer;
@@ -29,6 +31,7 @@ import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,10 +56,17 @@ public class HomeFragment extends Fragment {
     CategoryAdapter categoryAdapter;
     RecyclerView recyclerViewCategory;
 
+
     /*Book Offer*/
     List<Offer> listOffer = new ArrayList<>();
     BookOfferAdapter bookOfferAdapter;
     RecyclerView recyclerViewBookOffer;
+
+
+    /*SecondBanner*/
+    List<Banner> secondBanners = new ArrayList<>();
+    SecondBannerAdapter secondBannerAdapter;
+    RecyclerView recyclerViewSecondBanner;
 
 
     @Override
@@ -67,7 +77,7 @@ public class HomeFragment extends Fragment {
         getBannersResponse();
         getCategoriesResponse();
         getBookOfferResponse();
-
+        getSecondBannerResponse();
         return view;
     }
 
@@ -100,11 +110,19 @@ public class HomeFragment extends Fragment {
         recyclerViewBookOffer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         /*First Object Item For Book Offer Recycler View*/
-        FirstItemOffer firstItemOffer = new FirstItemOffer( "مشاهده همه >", "https://www.digikala.com/static/files/63494995.png");
+        FirstItemOffer firstItemOffer = new FirstItemOffer("مشاهده همه >", "http://localhost/book%20store/icons/offer.png");
         listOffer.add(new Offer(1, firstItemOffer));
 
         bookOfferAdapter = new BookOfferAdapter(getContext(), listOffer);
         recyclerViewBookOffer.setAdapter(bookOfferAdapter);
+
+        /*Initialize Second Banner Recycler View */
+        recyclerViewSecondBanner = view.findViewById(R.id.homeFragment_recyclerView_second_banner);
+        recyclerViewSecondBanner.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        secondBannerAdapter = new SecondBannerAdapter(getContext(), secondBanners);
+        recyclerViewSecondBanner.setHasFixedSize(true);
+        recyclerViewSecondBanner.setAdapter(secondBannerAdapter);
+
 
     }
 
@@ -217,14 +235,14 @@ public class HomeFragment extends Fragment {
         thread.start();
     }
 
-    private void getBookOfferResponse(){
+    private void getBookOfferResponse() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_BOOK_OFFER, response -> {
             Gson gson = new Gson();
             BookOffer[] arrayBookOffer = gson.fromJson(response, BookOffer[].class);
 
             for (BookOffer bookOffer : arrayBookOffer) {
-                listOffer.add(new Offer(0, (BookOffer) bookOffer));
+                listOffer.add(new Offer(0, bookOffer));
             }
             bookOfferAdapter.notifyDataSetChanged();
 
@@ -232,6 +250,21 @@ public class HomeFragment extends Fragment {
 
         requestQueue.add(stringRequest);
 
+
+    }
+
+    private void getSecondBannerResponse() {
+
+        StringRequest request = new StringRequest(Request.Method.GET, Constants.LINK_BANNER_SECOND, response -> {
+
+            Gson gson = new Gson();
+            Banner[] secondBannerArray = gson.fromJson(response, Banner[].class);
+            secondBanners.addAll(Arrays.asList(secondBannerArray));
+            secondBannerAdapter.notifyDataSetChanged();
+
+        }, error -> Log.e(TAG, "getSecondBannerResponse: " + error.getMessage()));
+
+        requestQueue.add(request);
 
     }
 

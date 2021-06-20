@@ -4,18 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
     android:layout_height="300dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="20dp"
-
     android:layout_marginTop="4dp"
-   android:background="@color/colorPrimary">
+    android:background="#FFEB3B">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/item_firstAmazing_img"
+            android:id="@+id/item_firstNews_img"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:layout_centerInParent="true"
@@ -25,7 +23,7 @@
             android:id="@+id/item_firstAmazing_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/item_firstAmazing_img"
+            android:layout_below="@id/item_firstNews_img"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="4dp"

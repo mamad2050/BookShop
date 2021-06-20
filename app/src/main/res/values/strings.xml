@@ -6,7 +6,8 @@
     <string name="nav_categories">Categories</string>
     <string name="nav_search">Search</string>
     <string name="nav_profile">Profile</string>
-    <string name="home_fragment_offer_textView">Remaining time until all the amazing offers</string>
+    <string name="home_fragment_offer_head">Remaining time until all the amazing offers</string>
+ <string name="home_fragment_news_head">The latest books</string>
     <string name="nav_shopping_cart">Shopping Cart</string>
     <string name="login_activity_toolbar">login</string>
     <string name="login_card_header">If you do not have an account , Click Create a new account</string>
@@ -19,4 +20,5 @@
     <string name="register_btn">Register</string>
     <string name="mail">Mail</string>
     <string name="phone">Phone</string>
+    <string name="toman">Toman</string>
 </resources>
