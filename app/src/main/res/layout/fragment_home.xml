@@ -54,7 +54,6 @@
                 android:textSize="12sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-
                 android:id="@+id/homeFragment_recyclerView_bookOffer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,11 +87,11 @@
 
                 android:id="@+id/homeFragment_recyclerView_news"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/txt_news"
                 android:layout_marginTop="12dp"
-                android:background="#FFEB3B"
-                />
+                android:layout_marginBottom="12dp"
+                android:background="#FFEB3B" />
 
         </RelativeLayout>
 

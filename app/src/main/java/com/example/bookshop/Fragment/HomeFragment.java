@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Adapter.BookNewAdapter;
 import com.example.bookshop.Adapter.BookOfferAdapter;
 import com.example.bookshop.Adapter.CategoryAdapter;
 import com.example.bookshop.Adapter.SecondBannerAdapter;
@@ -68,6 +69,11 @@ public class HomeFragment extends Fragment {
     SecondBannerAdapter secondBannerAdapter;
     RecyclerView recyclerViewSecondBanner;
 
+    /*Book News*/
+    List<Offer> listNews = new ArrayList<>();
+    BookNewAdapter bookNewAdapter;
+    RecyclerView recyclerViewNewBooks;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,8 +84,10 @@ public class HomeFragment extends Fragment {
         getCategoriesResponse();
         getBookOfferResponse();
         getSecondBannerResponse();
+        getNewBooksResponse();
         return view;
     }
+
 
     private void initialize() {
 
@@ -112,9 +120,9 @@ public class HomeFragment extends Fragment {
         /*First Object Item For Book Offer Recycler View*/
         FirstItemOffer firstItemOffer = new FirstItemOffer("مشاهده همه >", "http://localhost/book%20store/icons/offer.png");
         listOffer.add(new Offer(1, firstItemOffer));
-
         bookOfferAdapter = new BookOfferAdapter(getContext(), listOffer);
         recyclerViewBookOffer.setAdapter(bookOfferAdapter);
+
 
         /*Initialize Second Banner Recycler View */
         recyclerViewSecondBanner = view.findViewById(R.id.homeFragment_recyclerView_second_banner);
@@ -122,6 +130,20 @@ public class HomeFragment extends Fragment {
         secondBannerAdapter = new SecondBannerAdapter(getContext(), secondBanners);
         recyclerViewSecondBanner.setHasFixedSize(true);
         recyclerViewSecondBanner.setAdapter(secondBannerAdapter);
+
+
+        /*Initialize Book News RecyclerView*/
+        recyclerViewNewBooks = view.findViewById(R.id.homeFragment_recyclerView_news);
+        recyclerViewNewBooks.setHasFixedSize(true);
+        recyclerViewNewBooks.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+
+        /*First Object Item For Book News Recycler View*/
+        FirstItemOffer firstItemNews = new FirstItemOffer("مشاهده همه >", "http://localhost/book%20store/icons/offer.png");
+        listNews.add(new Offer(1, firstItemNews));
+
+        bookNewAdapter = new BookNewAdapter(getContext(), listNews);
+        recyclerViewNewBooks.setAdapter(bookNewAdapter);
 
 
     }
@@ -266,6 +288,23 @@ public class HomeFragment extends Fragment {
 
         requestQueue.add(request);
 
+    }
+
+    private void getNewBooksResponse() {
+
+        StringRequest request = new StringRequest(Request.Method.GET, Constants.LINK_BOOK_NEWS, response -> {
+
+            Gson gson = new Gson();
+            BookOffer[] bookNewsArray = gson.fromJson(response,BookOffer[].class);
+
+            for (BookOffer bookOffer : bookNewsArray) {
+                listNews.add(new Offer(0, bookOffer));
+            }
+            bookNewAdapter.notifyDataSetChanged();
+
+        }, error -> Log.e(TAG, "getNewBooksResponse: " + error.getMessage()));
+
+        requestQueue.add(request);
     }
 
 }
