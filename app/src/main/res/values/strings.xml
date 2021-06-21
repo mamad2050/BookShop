@@ -20,5 +20,6 @@
     <string name="register_btn">Register</string>
     <string name="mail">Mail</string>
     <string name="phone">Phone</string>
-    <string name="toman">Toman</string>
+    <string name="toman">IRT</string>
+    <string name="show_all">Show All</string>
 </resources>

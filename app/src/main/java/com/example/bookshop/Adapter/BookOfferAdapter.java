@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bookshop.Global.DecimalFormatter;
+import com.example.bookshop.Model.LastItem;
 import com.example.bookshop.Model.Offer;
 import com.example.bookshop.Model.BookOffer;
 import com.example.bookshop.Model.FirstItemOffer;
@@ -47,12 +48,14 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             View view = LayoutInflater.from(context).inflate(R.layout.item_book_offer, parent, false);
             return new BookOfferViewHolder(view);
 
-        } else {
-
+        } else if (viewType == 1) {
             View view = LayoutInflater.from(context).inflate(R.layout.item_first_item_offer, parent, false);
             return new FirstItemViewHolder(view);
-
+        } else {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_show_all_book, parent, false);
+            return new BookOfferAdapter.EndItemViewHolder(view);
         }
+
 
     }
 
@@ -63,10 +66,13 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             BookOffer bookOffer = (BookOffer) data.get(position).getObject();
             ((BookOfferViewHolder) holder).setBookOfferItems(bookOffer);
 
-        } else {
+        } else if (getItemViewType(position) == 1) {
 
             FirstItemOffer firstItemOffer = (FirstItemOffer) data.get(position).getObject();
             ((FirstItemViewHolder) holder).setFirstItem(firstItemOffer);
+        } else if (getItemViewType(position) == 2) {
+            LastItem lastItem = (LastItem) data.get(position).getObject();
+            ((BookOfferAdapter.EndItemViewHolder) holder).setLastItem(lastItem);
         }
 
     }
@@ -98,7 +104,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public void setFirstItem(FirstItemOffer firstItemOffer) {
 
             txt_title_firstAmazing.setText(firstItemOffer.getTitle());
-            Glide.with(context).load(R.drawable.offer).into(img_firstAmazing);
+            Glide.with(context).load(firstItemOffer.getLink_img()).into(img_firstAmazing);
 
         }
 
@@ -131,7 +137,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             /*set Final Price*/
             int finalPrice = Integer.parseInt(bookOffer.getFinal_price());
-            txt_final_price.setText(DecimalFormatter.formatted(finalPrice) );
+            txt_final_price.setText(DecimalFormatter.formatted(finalPrice));
 
 
             /*Scratch Original Price*/
@@ -142,6 +148,27 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             Glide.with(context).load(bookOffer.getLink_img()).into(img_book);
 
+
+        }
+    }
+
+    public class EndItemViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView img_lastItem;
+        TextView txt_lastItem;
+
+        public EndItemViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            img_lastItem = itemView.findViewById(R.id.item_show_all_book_img);
+            txt_lastItem = itemView.findViewById(R.id.item_show_all_book_title);
+
+        }
+
+        public void setLastItem(LastItem lastItem) {
+
+            txt_lastItem.setText(lastItem.getTitle());
+//            Glide.with(context).load(lastItem.getImg_link()).into(img_lastItem);
 
         }
     }

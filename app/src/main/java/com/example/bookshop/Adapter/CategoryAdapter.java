@@ -45,9 +45,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
             holder.name_category.setText(categories.get(position).getName_en());
         }
 
-
         Glide.with(context).load(categories.get(position).getLink_img())
-                .centerCrop().into(holder.img_category);
+                .centerCrop().circleCrop().into(holder.img_category);
     }
 
     @Override

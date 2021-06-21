@@ -23,6 +23,7 @@
     <string name="phone">تلفن همراه</string>
     <string name="home_fragment_news_head">"جدیدترین کتاب ها "</string>
     <string name="toman">تومان</string>
+    <string name="show_all">مشاهده همه</string>
 
 
 </resources>

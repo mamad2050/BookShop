@@ -34,14 +34,15 @@
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
 
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tabs"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp" />
+
+                />
+
 
             <TextView
                 android:id="@+id/txt_amazing"
@@ -51,7 +52,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/home_fragment_offer_head"
-                android:textSize="12sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/homeFragment_recyclerView_bookOffer"
@@ -59,11 +61,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_amazing"
                 android:layout_marginTop="8dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/colorPrimary"
+                android:paddingEnd="8dp" />
 
 
             <androidx.recyclerview.widget.RecyclerView
-
                 android:id="@+id/homeFragment_recyclerView_second_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +83,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/home_fragment_news_head"
-                android:textSize="12sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
 
@@ -91,7 +94,8 @@
                 android:layout_below="@id/txt_news"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:background="#FFEB3B" />
+                android:background="#FFEB3B"
+                android:paddingEnd="8dp" />
 
         </RelativeLayout>
 

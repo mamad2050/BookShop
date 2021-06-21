@@ -24,6 +24,7 @@ import com.example.bookshop.Adapter.SecondBannerAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
 import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.BookOffer;
+import com.example.bookshop.Model.LastItem;
 import com.example.bookshop.Model.Offer;
 import com.example.bookshop.Model.Banner;
 import com.example.bookshop.Global.Constants;
@@ -85,6 +86,7 @@ public class HomeFragment extends Fragment {
         getBookOfferResponse();
         getSecondBannerResponse();
         getNewBooksResponse();
+
         return view;
     }
 
@@ -118,7 +120,7 @@ public class HomeFragment extends Fragment {
         recyclerViewBookOffer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         /*First Object Item For Book Offer Recycler View*/
-        FirstItemOffer firstItemOffer = new FirstItemOffer("مشاهده همه >", "http://localhost/book%20store/icons/offer.png");
+        FirstItemOffer firstItemOffer = new FirstItemOffer("محصولات تخفیف دار فروشگاه", "http://192.168.1.165/book%20store/icons/offer.png");
         listOffer.add(new Offer(1, firstItemOffer));
         bookOfferAdapter = new BookOfferAdapter(getContext(), listOffer);
         recyclerViewBookOffer.setAdapter(bookOfferAdapter);
@@ -139,7 +141,7 @@ public class HomeFragment extends Fragment {
 
 
         /*First Object Item For Book News Recycler View*/
-        FirstItemOffer firstItemNews = new FirstItemOffer("مشاهده همه >", "http://localhost/book%20store/icons/offer.png");
+        FirstItemOffer firstItemNews = new FirstItemOffer("جدیدترین محصولات فروشگاه", "http://192.168.1.165/book%20store/icons/new.png");
         listNews.add(new Offer(1, firstItemNews));
 
         bookNewAdapter = new BookNewAdapter(getContext(), listNews);
@@ -267,11 +269,15 @@ public class HomeFragment extends Fragment {
                 listOffer.add(new Offer(0, bookOffer));
             }
             bookOfferAdapter.notifyDataSetChanged();
+            /*last item for new books recyclerview*/
+            LastItem lastItem = new LastItem(R.string.show_all, R.drawable.forward);
+            listOffer.add(new Offer(2, lastItem));
+            /*                               */
+
 
         }, error -> Log.e(TAG, "onErrorResponse: " + error.getMessage()));
 
         requestQueue.add(stringRequest);
-
 
     }
 
@@ -295,16 +301,22 @@ public class HomeFragment extends Fragment {
         StringRequest request = new StringRequest(Request.Method.GET, Constants.LINK_BOOK_NEWS, response -> {
 
             Gson gson = new Gson();
-            BookOffer[] bookNewsArray = gson.fromJson(response,BookOffer[].class);
+            BookOffer[] bookNewsArray = gson.fromJson(response, BookOffer[].class);
 
             for (BookOffer bookOffer : bookNewsArray) {
                 listNews.add(new Offer(0, bookOffer));
             }
             bookNewAdapter.notifyDataSetChanged();
 
+            /*last item for new books recyclerview*/
+            LastItem lastItem = new LastItem(R.string.show_all, R.drawable.forward);
+            listNews.add(new Offer(2, lastItem));
+            /*                               */
+
         }, error -> Log.e(TAG, "getNewBooksResponse: " + error.getMessage()));
 
         requestQueue.add(request);
+
     }
 
 }
