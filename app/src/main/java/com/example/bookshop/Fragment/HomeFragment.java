@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.bookshop.Adapter.BookNewAdapter;
 import com.example.bookshop.Adapter.BookOfferAdapter;
 import com.example.bookshop.Adapter.CategoryAdapter;
+import com.example.bookshop.Adapter.PublisherAdapter;
 import com.example.bookshop.Adapter.SecondBannerAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
 import com.example.bookshop.HomeActivity;
@@ -30,6 +31,7 @@ import com.example.bookshop.Model.Banner;
 import com.example.bookshop.Global.Constants;
 import com.example.bookshop.Model.Category;
 import com.example.bookshop.Model.FirstItemOffer;
+import com.example.bookshop.Model.Publisher;
 import com.example.bookshop.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -75,6 +77,11 @@ public class HomeFragment extends Fragment {
     BookNewAdapter bookNewAdapter;
     RecyclerView recyclerViewNewBooks;
 
+    /*Publishers*/
+    List<Publisher> publishers = new ArrayList<>();
+    PublisherAdapter publisherAdapter;
+    RecyclerView recyclerViewPublishers;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -86,6 +93,7 @@ public class HomeFragment extends Fragment {
         getBookOfferResponse();
         getSecondBannerResponse();
         getNewBooksResponse();
+        getPublisherResponse();
 
         return view;
     }
@@ -140,13 +148,21 @@ public class HomeFragment extends Fragment {
         recyclerViewNewBooks.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
-        /*First Object Item For Book News Recycler View*/
+        /*InitializeFirst Object Item For Book News Recycler View*/
         FirstItemOffer firstItemNews = new FirstItemOffer("جدیدترین محصولات فروشگاه", "http://192.168.1.165/book%20store/icons/new.png");
         listNews.add(new Offer(1, firstItemNews));
 
         bookNewAdapter = new BookNewAdapter(getContext(), listNews);
         recyclerViewNewBooks.setAdapter(bookNewAdapter);
 
+
+
+        /*Initialize Publisher RecyclerView*/
+        recyclerViewPublishers = view.findViewById(R.id.homeFragment_recyclerView_publisher);
+        recyclerViewPublishers.setHasFixedSize(true);
+        recyclerViewPublishers.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        publisherAdapter = new PublisherAdapter(publishers, getContext());
+        recyclerViewPublishers.setAdapter(publisherAdapter);
 
     }
 
@@ -318,5 +334,23 @@ public class HomeFragment extends Fragment {
         requestQueue.add(request);
 
     }
+
+
+    private void getPublisherResponse() {
+
+        StringRequest request = new StringRequest(Request.Method.GET, Constants.LINK_PUBLISHERS, response -> {
+
+            Gson gson = new Gson();
+            Publisher[] publisherArray = gson.fromJson(response, Publisher[].class);
+            publishers.addAll(Arrays.asList(publisherArray));
+            publisherAdapter.notifyDataSetChanged();
+
+
+        }, error -> Log.e(TAG, "getPublisherResponse:" + error.getMessage()));
+
+        requestQueue.add(request);
+
+    }
+
 
 }

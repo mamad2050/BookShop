@@ -76,6 +76,7 @@
 
 
             <TextView
+                style="@style/titleStyle"
                 android:id="@+id/txt_news"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,8 +84,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/home_fragment_news_head"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+               />
 
             <androidx.recyclerview.widget.RecyclerView
 
@@ -96,6 +96,22 @@
                 android:layout_marginBottom="12dp"
                 android:background="#FFEB3B"
                 android:paddingEnd="8dp" />
+
+            <TextView
+                android:layout_marginStart="8dp"
+                android:id="@+id/txt_pub_header"
+                style="@style/titleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/homeFragment_recyclerView_news"
+                android:text="@string/top_publishers" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homeFragment_recyclerView_publisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_pub_header"
+                android:layout_margin="8dp" />
 
         </RelativeLayout>
 

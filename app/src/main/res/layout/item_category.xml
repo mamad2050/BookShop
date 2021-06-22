@@ -9,11 +9,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
+        android:background="@drawable/bg_img_category"
         android:layout_width="50dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="6dp">
+     >
 
         <RelativeLayout
 

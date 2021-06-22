@@ -8,7 +8,7 @@
     <string name="nav_categories">دسته بندی ها</string>
     <string name="nav_search">جست و جو</string>
     <string name="nav_profile">حساب من</string>
-    <string name="home_fragment_offer_head">زمان باقیمانده تااتمام پیشنهاد های شگفت انگیز</string>
+    <string name="home_fragment_offer_head">زمان باقیمانده تااتمام پیشنهاد های شگفت انگیز:</string>
     <string name="nav_shopping_cart">سبد خرید</string>
     <string name="login_activity_toolbar">ورود</string>
     <string name="login_card_header">در صورتی که حساب کاربری ندارید ، بر روی ساخت حساب کاربری جدید کلیک کنید</string>
@@ -21,9 +21,10 @@
     <string name="register_btn">ثبت نام</string>
     <string name="mail">ایمیل</string>
     <string name="phone">تلفن همراه</string>
-    <string name="home_fragment_news_head">"جدیدترین کتاب ها "</string>
+    <string name="home_fragment_news_head">"جدیدترین محصولات فروشگاه : "</string>
     <string name="toman">تومان</string>
     <string name="show_all">مشاهده همه</string>
+    <string name="top_publishers">برترین انتشارات  فروشگاه :</string>
 
 
 </resources>
