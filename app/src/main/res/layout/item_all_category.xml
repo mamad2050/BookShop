@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/categoryCardColor"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+        <ImageView
+            android:layout_width="54dp"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/item_all_category_img"
+            android:layout_height="54dp" />
+
+        <TextView
+            android:id="@+id/item_all_category_title"
+            android:layout_width="wrap_content"
+            style="@style/titleStyle"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"
+            android:text="کتب دنشگاهی"/>
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

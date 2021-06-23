@@ -9,7 +9,7 @@
     <style name="toolbarTitleStyle">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
     </style>
 
 
@@ -34,9 +34,9 @@
 
     <style name="priceStyle">
 
-        <item name="fontFamily">@font/iransans</item>
+        <item name="fontFamily">@font/iransans_black</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:gravity">center</item>
         <item name="maxLines">1</item>
     </style>
