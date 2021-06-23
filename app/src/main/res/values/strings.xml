@@ -23,4 +23,6 @@
     <string name="toman">IRT</string>
     <string name="show_all">Show All</string>
     <string name="top_publishers">Top Publishers</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

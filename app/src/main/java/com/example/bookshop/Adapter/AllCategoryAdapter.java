@@ -1,6 +1,7 @@
 package com.example.bookshop.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookshop.Activity.DetailCategoryActivity;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Category;
 import com.example.bookshop.R;
 
@@ -22,6 +25,20 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
     Context context;
     List<Category> data;
 
+    public interface ClickedOnCategoryListener {
+
+        void onClick(Category category);
+
+    }
+
+    private ClickedOnCategoryListener listener;
+
+    public void setListener(ClickedOnCategoryListener listener) {
+
+        this.listener = listener;
+
+    }
+
 
     public AllCategoryAdapter(Context context, List<Category> data) {
         this.context = context;
@@ -31,7 +48,7 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_all_category,parent,false));
+        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_all_category, parent, false));
     }
 
     @Override
@@ -57,6 +74,8 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
 
             img_category = itemView.findViewById(R.id.item_all_category_img);
             title_category = itemView.findViewById(R.id.item_all_category_title);
+
+            itemView.setOnClickListener(v -> listener.onClick(data.get(getAdapterPosition())));
 
         }
     }

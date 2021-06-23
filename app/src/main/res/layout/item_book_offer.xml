@@ -58,7 +58,7 @@
 
             <TextView
                 android:id="@+id/item_book_offer_finalPrice_txt"
-                style="@style/priceStyle"
+                style="@style/finalPriceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -71,8 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/toman"
+                android:fontFamily="@font/iran_yekan_light"
                 android:textColor="@color/black"
-                android:textSize="10sp"
+                android:textSize="11sp"
                 tools:ignore="SmallSp" />
 
         </LinearLayout>

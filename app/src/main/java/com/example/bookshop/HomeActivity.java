@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookshop.Fragment.CategoryFragment;
@@ -23,6 +24,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     BottomNavigationView bottomNavigationView;
     public static String defSystemLocale;
+    TextView toolbar_title;
 
     @Override
 
@@ -41,6 +43,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     private void initialize() {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        toolbar_title = findViewById(R.id.home_activity_toolbar_title);
+        toolbar_title.setText(R.string.app_name);
         bottomNavigationView.setItemIconTintList(null);
 
     }
@@ -52,6 +56,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
 
             case R.id.nav_home:
+                toolbar_title.setText(R.string.app_name);
                 HomeFragment homeFragment = new HomeFragment();
                 setFragment(homeFragment);
 
@@ -59,17 +64,20 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 break;
 
             case R.id.nav_search:
+                toolbar_title.setText(R.string.nav_search);
                 SearchFragment searchFragment = new SearchFragment();
                 setFragment(searchFragment);
 
                 break;
 
             case R.id.nav_categories:
+                toolbar_title.setText(R.string.nav_categories);
                 CategoryFragment categoryFragment = new CategoryFragment();
                 setFragment(categoryFragment);
                 break;
 
             case R.id.nav_profile:
+                toolbar_title.setText(R.string.nav_profile);
                 ProfileFragment profileFragment = new ProfileFragment();
                 setFragment(profileFragment);
                 break;
@@ -79,7 +87,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void setFragment(Fragment fragment) {
 
-        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment).commit();
 
     }

@@ -1,5 +1,6 @@
 package com.example.bookshop.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,13 +11,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Activity.DetailCategoryActivity;
 import com.example.bookshop.Adapter.AllCategoryAdapter;
 import com.example.bookshop.Global.Constants;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Category;
 import com.example.bookshop.R;
 import com.google.gson.Gson;
@@ -35,6 +39,7 @@ public class CategoryFragment extends Fragment {
     RecyclerView recyclerView;
     List<Category> categories = new ArrayList<>();
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +47,16 @@ public class CategoryFragment extends Fragment {
 
         initialize();
         getAllCategoryResponse();
+
+
+        /*Send Category Detail to Detail category Activity*/
+        allCategoryAdapter.setListener(category -> {
+
+            Intent intent = new Intent(getContext(), DetailCategoryActivity.class);
+            intent.putExtra(Key.ID, category.getId());
+            intent.putExtra(Key.TITLE,category.getName_fa());
+            startActivity(intent);
+        });
 
 
         return view;
