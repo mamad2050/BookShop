@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="128dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:layout_width="128dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_populars_img"
+            android:layout_width="120dp"
+            android:layout_height="156dp"
+            android:layout_margin="8dp" />
+
+        <TextView
+            android:id="@+id/item_populars_book_name"
+            style="@style/titleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_populars_img"
+            android:layout_centerHorizontal="true"
+            android:text="سرزمین عجایب" />
+
+
+        <TextView
+            android:id="@+id/item_populars_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_populars_book_name"
+            android:layout_alignStart="@id/item_populars_book_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="سرزمین عجایب"
+            android:textSize="10sp" />
+
+
+        <LinearLayout
+            android:id="@+id/price_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_populars_author"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp">
+
+            <TextView
+
+                android:id="@+id/item_populars_final_price"
+                style="@style/finalPriceStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                tools:text="25,000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iran_yekan_light"
+                android:text="@string/toman"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_populars_price"
+            style="@style/priceStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_layout"
+            android:layout_alignStart="@id/price_layout"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:textSize="11sp"
+            android:layout_marginBottom="8dp"
+            tools:text="41,000" />
+
+
+        <TextView
+            android:id="@+id/item_populars_discount"
+            android:textColor="@color/white"
+            android:layout_width="30dp"
+            android:textSize="10sp"
+            android:fontFamily="@font/iran_yekan_medium"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_populars_author"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_txt_discount"
+            android:gravity="center"
+            tools:text="30%" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -80,4 +80,6 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
         }
     }
 
+
+
 }

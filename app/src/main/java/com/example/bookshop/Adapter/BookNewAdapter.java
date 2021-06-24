@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bookshop.Global.DecimalFormatter;
-import com.example.bookshop.Model.BookOffer;
+import com.example.bookshop.Model.Book;
 import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.Model.LastItem;
 import com.example.bookshop.Model.Offer;
@@ -57,8 +57,8 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         if (getItemViewType(position) == 0) {
-            BookOffer bookOffer = (BookOffer) data.get(position).getObject();
-            ((BookNewAdapter.BookNewsViewHolder) holder).setBookNewsItems(bookOffer);
+            Book book = (Book) data.get(position).getObject();
+            ((BookNewAdapter.BookNewsViewHolder) holder).setBookNewsItems(book);
 
         } else if (getItemViewType(position) == 1) {
             FirstItemOffer firstItemOffer = (FirstItemOffer) data.get(position).getObject();
@@ -116,15 +116,15 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         @SuppressLint("SetTextI18n")
-        public void setBookNewsItems(BookOffer bookOffer) {
+        public void setBookNewsItems(Book book) {
 
-            txt_bookName.setText(bookOffer.getName());
+            txt_bookName.setText(book.getName());
 
             /*set Final Price*/
-            int finalPrice = Integer.parseInt(bookOffer.getPrice());
+            int finalPrice = Integer.parseInt(book.getPrice());
             txt_final_price.setText(DecimalFormatter.formatted(finalPrice));
 
-            Glide.with(context).load(bookOffer.getLink_img()).into(img_book);
+            Glide.with(context).load(book.getLink_img()).into(img_book);
 
 
         }

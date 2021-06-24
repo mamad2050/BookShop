@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.bookshop.Model.BookOffer;
+import com.example.bookshop.Model.Book;
 import com.example.bookshop.R;
 
 import java.util.List;
@@ -19,9 +19,9 @@ import java.util.List;
 public class DetailCategoryAdapter extends RecyclerView.Adapter<DetailCategoryAdapter.Holder> {
 
     Context context;
-    List<BookOffer> data;
+    List<Book> data;
 
-    public DetailCategoryAdapter(Context context, List<BookOffer> data) {
+    public DetailCategoryAdapter(Context context, List<Book> data) {
         this.context = context;
         this.data = data;
     }

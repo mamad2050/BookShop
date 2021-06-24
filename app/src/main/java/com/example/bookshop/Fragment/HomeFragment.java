@@ -24,7 +24,7 @@ import com.example.bookshop.Adapter.PublisherAdapter;
 import com.example.bookshop.Adapter.SecondBannerAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
 import com.example.bookshop.HomeActivity;
-import com.example.bookshop.Model.BookOffer;
+import com.example.bookshop.Model.Book;
 import com.example.bookshop.Model.LastItem;
 import com.example.bookshop.Model.Offer;
 import com.example.bookshop.Model.Banner;
@@ -35,7 +35,6 @@ import com.example.bookshop.Model.Publisher;
 import com.example.bookshop.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -279,9 +278,9 @@ public class HomeFragment extends Fragment {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_BOOK_OFFER, response -> {
             Gson gson = new Gson();
-            BookOffer[] arrayBookOffer = gson.fromJson(response, BookOffer[].class);
+            Book[] arrayBook = gson.fromJson(response, Book[].class);
 
-            for (BookOffer bookOffer : arrayBookOffer) {
+            for (Book bookOffer : arrayBook) {
                 listOffer.add(new Offer(0, bookOffer));
             }
             bookOfferAdapter.notifyDataSetChanged();
@@ -317,9 +316,9 @@ public class HomeFragment extends Fragment {
         StringRequest request = new StringRequest(Request.Method.GET, Constants.LINK_BOOK_NEWS, response -> {
 
             Gson gson = new Gson();
-            BookOffer[] bookNewsArray = gson.fromJson(response, BookOffer[].class);
+            Book[] bookNewsArray = gson.fromJson(response, Book[].class);
 
-            for (BookOffer bookOffer : bookNewsArray) {
+            for (Book bookOffer : bookNewsArray) {
                 listNews.add(new Offer(0, bookOffer));
             }
             bookNewAdapter.notifyDataSetChanged();

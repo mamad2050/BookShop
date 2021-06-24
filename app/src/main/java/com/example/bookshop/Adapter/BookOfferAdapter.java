@@ -2,9 +2,6 @@ package com.example.bookshop.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.fonts.Font;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
@@ -21,10 +18,9 @@ import com.bumptech.glide.Glide;
 import com.example.bookshop.Global.DecimalFormatter;
 import com.example.bookshop.Model.LastItem;
 import com.example.bookshop.Model.Offer;
-import com.example.bookshop.Model.BookOffer;
+import com.example.bookshop.Model.Book;
 import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -63,8 +59,8 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         if (getItemViewType(position) == 0) {
-            BookOffer bookOffer = (BookOffer) data.get(position).getObject();
-            ((BookOfferViewHolder) holder).setBookOfferItems(bookOffer);
+            Book book = (Book) data.get(position).getObject();
+            ((BookOfferViewHolder) holder).setBookOfferItems(book);
 
         } else if (getItemViewType(position) == 1) {
 
@@ -127,26 +123,26 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         @SuppressLint("SetTextI18n")
-        public void setBookOfferItems(BookOffer bookOffer) {
+        public void setBookOfferItems(Book book) {
 
-            txt_bookName.setText(bookOffer.getName());
+            txt_bookName.setText(book.getName());
 
 
-            int discount = Integer.parseInt(bookOffer.getDiscount());
+            int discount = Integer.parseInt(book.getDiscount());
             txt_discount.setText(DecimalFormatter.formatted(discount) + "%");
 
             /*set Final Price*/
-            int finalPrice = Integer.parseInt(bookOffer.getFinal_price());
+            int finalPrice = Integer.parseInt(book.getFinal_price());
             txt_final_price.setText(DecimalFormatter.formatted(finalPrice));
 
 
             /*Scratch Original Price*/
-            int price = Integer.parseInt(bookOffer.getPrice());
+            int price = Integer.parseInt(book.getPrice());
             SpannableString spannableString = new SpannableString(DecimalFormatter.formatted(price));
-            spannableString.setSpan(new StrikethroughSpan(), 0, bookOffer.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new StrikethroughSpan(), 0, book.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             txt_price.setText(spannableString);
 
-            Glide.with(context).load(bookOffer.getLink_img()).into(img_book);
+            Glide.with(context).load(book.getLink_img()).into(img_book);
 
 
         }

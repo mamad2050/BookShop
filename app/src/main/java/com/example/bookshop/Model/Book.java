@@ -1,8 +1,8 @@
 package com.example.bookshop.Model;
 
-public class BookOffer {
+public class Book {
 
-    private String id, category_id, name, link_img , price , discount, brand , final_price;
+    private String id, category_id, name, link_img , price , discount, brand , final_price , author;
 
     public String getId() {
         return id;
@@ -66,5 +66,14 @@ public class BookOffer {
 
     public void setFinal_price(String final_price) {
         this.final_price = final_price;
+    }
+
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
