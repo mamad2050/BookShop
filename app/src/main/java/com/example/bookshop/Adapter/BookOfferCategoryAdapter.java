@@ -20,22 +20,20 @@ import com.example.bookshop.R;
 
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
-
+public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCategoryAdapter.Holder> {
 
     Context context;
-    List<Book> data;
+    List<Book>data;
 
-
-    public BookAdapter(Context context, List<Book> data) {
+    public BookOfferCategoryAdapter(Context context, List<Book> data) {
         this.context = context;
         this.data = data;
     }
 
     @NonNull
     @Override
-    public BookAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new BookAdapter.Holder(LayoutInflater.from(context).inflate(R.layout.item_popular, parent, false));
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_off_category,parent,false));
     }
 
     @Override
@@ -72,14 +70,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
             holder.txt_discount.setText(DecimalFormatter.formatted(discount) + "%");
         }
 
-        if (data.indexOf(data.get(position))==data.size()-1) {
-            holder.verticalLine.setVisibility(View.INVISIBLE);
-        }
-
 
 
     }
-
 
     @Override
     public int getItemCount() {
@@ -94,21 +87,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
         TextView txt_price;
         TextView txt_author;
         TextView txt_discount;
-        View verticalLine;
-
 
         public Holder(@NonNull View itemView) {
             super(itemView);
 
-            img_book = itemView.findViewById(R.id.item_populars_img);
-            txt_name = itemView.findViewById(R.id.item_populars_book_name);
-            txt_author = itemView.findViewById(R.id.item_populars_author);
-            txt_finalPrice = itemView.findViewById(R.id.item_populars_final_price);
-            txt_price = itemView.findViewById(R.id.item_populars_price);
-            txt_discount = itemView.findViewById(R.id.item_populars_discount);
-            verticalLine =itemView.findViewById(R.id.item_populars_view);
+            img_book = itemView.findViewById(R.id.item_book_off_category_img);
+            txt_name = itemView.findViewById(R.id.item_book_off_category_name);
+            txt_author = itemView.findViewById(R.id.item_book_off_category_author);
+            txt_finalPrice = itemView.findViewById(R.id.item_book_off_category_final_price);
+            txt_price = itemView.findViewById(R.id.item_book_off_category_price);
+            txt_discount = itemView.findViewById(R.id.item_book_off_category_discount);
+
+
 
         }
     }
-
 }

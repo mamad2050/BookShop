@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookShop"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.DetailCategoryActivity"></activity>
-        <activity android:name=".Activity.LoginActivity"></activity>
-        <activity android:name=".Activity.RegisterActivity"></activity>
+        <activity android:name=".Activity.BookActivity"></activity>
+        <activity android:name=".Activity.DetailCategoryActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

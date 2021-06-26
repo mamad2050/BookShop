@@ -11,4 +11,5 @@ public class Constants {
     public static final String LINK_DETAIL_CATEGORY= "http://192.168.1.165/book%20store/getDetailCategory.php";
     public static final String LINK_POPULARS= "http://192.168.1.165/book%20store/getPopularBook.php";
     public static final String LINK_NEWS_FOR_CATEGORY = "http://192.168.1.165/book%20store/getNewBooksCategory.php";
+    public static final String LINK_OFFER_CATEGORY = "http://192.168.1.165/book%20store/getBookOfferCategory.php";
 }

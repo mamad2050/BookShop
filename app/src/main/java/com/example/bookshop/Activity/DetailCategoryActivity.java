@@ -15,6 +15,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Adapter.BookOfferCategoryAdapter;
 import com.example.bookshop.Adapter.DetailCategoryAdapter;
 import com.example.bookshop.Adapter.BookAdapter;
 import com.example.bookshop.Global.Constants;
@@ -53,6 +54,11 @@ public class DetailCategoryActivity extends AppCompatActivity {
     BookAdapter newBookAdapter;
     List<Book> newBooks = new ArrayList<>();
 
+    /* offer books recyclerview*/
+    RecyclerView offerRecyclerView;
+    BookOfferCategoryAdapter bookOfferCategoryAdapter;
+    List<Book> offBooks = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +69,7 @@ public class DetailCategoryActivity extends AppCompatActivity {
 //        getAllSubs();
         getPopulars();
         getNewBooks();
-
+        getOfferBook();
     }
 
 
@@ -92,13 +98,20 @@ public class DetailCategoryActivity extends AppCompatActivity {
 
         /* Initialize New recyclerview*/
 
-        newBookRecyclerview =  findViewById(R.id.activity_detail_category_newsRecyclerview);
+        newBookRecyclerview = findViewById(R.id.activity_detail_category_newsRecyclerview);
         newBookRecyclerview.setHasFixedSize(true);
-        newBookRecyclerview.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-        newBookAdapter = new BookAdapter(this,newBooks);
+        newBookRecyclerview.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        newBookAdapter = new BookAdapter(this, newBooks);
         newBookRecyclerview.setAdapter(newBookAdapter);
 
 
+        /* Initialize Offer recyclerview*/
+
+        offerRecyclerView = findViewById(R.id.activity_detail_category_offRecyclerview);
+        offerRecyclerView.setHasFixedSize(true);
+        offerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        bookOfferCategoryAdapter = new BookOfferCategoryAdapter(this, offBooks);
+        offerRecyclerView.setAdapter(bookOfferCategoryAdapter);
 
 
     }
@@ -174,15 +187,14 @@ public class DetailCategoryActivity extends AppCompatActivity {
     }
 
 
-
     private void getNewBooks() {
 
         Response.Listener<String> listener = response -> {
 
             Gson gson = new Gson();
-            Book[] populars = gson.fromJson(response, Book[].class);
+            Book[] news = gson.fromJson(response, Book[].class);
 
-            newBooks.addAll(Arrays.asList(populars));
+            newBooks.addAll(Arrays.asList(news));
             newBookAdapter.notifyDataSetChanged();
 
         };
@@ -191,6 +203,40 @@ public class DetailCategoryActivity extends AppCompatActivity {
 
 
         StringRequest request = new StringRequest(Request.Method.POST, Constants.LINK_NEWS_FOR_CATEGORY, listener, errorListener) {
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put(Key.ID, bundle.getString(Key.ID));
+
+                return map;
+            }
+        };
+
+        requestQueue.add(request);
+
+    }
+
+
+    private void getOfferBook() {
+
+        Response.Listener<String> listener = response -> {
+
+            Gson gson = new Gson();
+            Book[] offers = gson.fromJson(response, Book[].class);
+
+            offBooks.addAll(Arrays.asList(offers));
+            bookOfferCategoryAdapter.notifyDataSetChanged();
+
+        };
+
+        Response.ErrorListener errorListener = error -> Log.e(TAG, "getNewBooksResponse: " + error.getMessage());
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.LINK_OFFER_CATEGORY, listener, errorListener) {
 
             @Nullable
             @Override

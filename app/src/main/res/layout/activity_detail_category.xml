@@ -51,12 +51,13 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:layout_marginStart="9dp"
                         android:id="@+id/txt_pop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:fontFamily="@font/iran_yekan_medium"
-                        android:text="محبوب ترین ها" />
+                        android:text="محبوب ترین ها " />
 
 
                     <TextView
@@ -67,8 +68,9 @@
                         android:layout_marginEnd="8dp"
                         android:background="@android:color/transparent"
                         android:text="نمایش همه"
+                        android:layout_alignTop="@id/txt_pop"
                         android:textColor="#3A0AA5"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
 
@@ -76,8 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txt_pop"
-
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="8dp" />
 
                 </RelativeLayout>
 
@@ -99,12 +100,13 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:layout_marginStart="8dp"
                         android:id="@+id/txt_news"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:fontFamily="@font/iran_yekan_medium"
-                        android:text="جدید ترین ها" />
+                        android:text="جدیدترین ها" />
 
 
                     <TextView
@@ -112,11 +114,12 @@
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="8dp"
+                        android:layout_alignTop="@id/txt_news"
                         android:layout_marginEnd="8dp"
                         android:background="@android:color/transparent"
                         android:text="نمایش همه"
                         android:textColor="#3A0AA5"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
 
@@ -124,14 +127,52 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txt_news"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="8dp" />
 
                 </RelativeLayout>
 
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_below="@id/card_news"
+                android:id="@+id/card_off"
+                android:layout_marginBottom="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
 
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_offs"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:text="محصولات تخفیف دار" />
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+
+                        android:id="@+id/activity_detail_category_offRecyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_offs"
+                        android:layout_marginTop="4dp" />
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
 
     android:padding="8dp">
 
     <TextView
         android:id="@+id/txt"
+        android:layout_marginStart="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="پیشنهاد ویژه"
@@ -25,31 +27,43 @@
         android:background="@color/colorPrimary" />
 
     <ImageView
-        android:id="@+id/item_popular_img_book"
+        android:id="@+id/item_book_off_category_img"
         android:layout_width="135dp"
         android:layout_height="185dp"
         android:layout_below="@id/view_1"
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/item_popular_txt_book_name"
+        android:id="@+id/item_book_off_category_name"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_below="@id/view_1"
         android:layout_marginTop="16dp"
         android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@id/item_popular_img_book"
-        android:textSize="12sp"
+        android:layout_toLeftOf="@id/item_book_off_category_img"
+        style="@style/titleStyle" />
+
+    <TextView
+        android:id="@+id/item_book_off_category_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_book_off_category_name"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_toLeftOf="@id/item_book_off_category_img"
+        android:textSize="10sp"
         android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_popular_txt_book_name"
-        android:layout_marginTop="24dp"
+        android:layout_below="@id/item_book_off_category_author"
+        android:layout_marginTop="12dp"
         android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@id/item_popular_img_book"
+        android:layout_toLeftOf="@id/item_book_off_category_img"
         android:orientation="horizontal">
 
         <ImageView
@@ -70,7 +84,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/item_popular_txt_discount"
+        android:id="@+id/item_book_off_category_discount"
         style="@style/discountStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,42 +92,63 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_toLeftOf="@id/item_popular_img_book"
+        android:layout_toLeftOf="@id/item_book_off_category_img"
         android:background="@drawable/bg_txt_discount"
         android:gravity="center"
         android:paddingLeft="6dp"
         android:paddingRight="6dp"
         android:text="%30" />
 
-    <TextView
-        android:id="@+id/item_popular_txt_final_price"
-        style="@style/finalPriceStyle"
+    <LinearLayout
+        android:id="@+id/price_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="4dp" />
+        android:layout_alignTop="@id/item_book_off_category_discount"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp">
 
+        <TextView
+
+            android:id="@+id/item_book_off_category_final_price"
+            style="@style/finalPriceStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:text="25,000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_yekan_light"
+            android:text="@string/toman"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/item_popular_txt_price"
+        android:id="@+id/item_book_off_category_price"
         style="@style/priceStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_popular_txt_final_price"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="4dp" />
+        android:layout_below="@id/price_layout"
+        android:layout_alignStart="@id/price_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"
+        tools:text="41,000" />
 
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.75dp"
-        android:layout_below="@id/item_popular_img_book"
+        android:layout_below="@id/item_book_off_category_img"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray" />
 
 </RelativeLayout>

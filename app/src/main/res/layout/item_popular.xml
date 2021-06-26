@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="128dp"
+    android:layout_width="146dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:orientation="horizontal">
+    >
 
 
     <RelativeLayout
+        android:id="@+id/parent_card"
         android:layout_width="128dp"
         android:layout_height="wrap_content">
 
@@ -29,10 +30,10 @@
 
         <TextView
             android:id="@+id/item_populars_author"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_populars_book_name"
-            android:layout_alignStart="@id/item_populars_book_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="4dp"
             android:text="سرزمین عجایب"
@@ -88,7 +89,7 @@
         <TextView
             android:id="@+id/item_populars_discount"
             android:textColor="@color/white"
-            android:layout_width="30dp"
+            android:layout_width="32dp"
             android:textSize="10sp"
             android:fontFamily="@font/iran_yekan_medium"
             android:maxLines="1"
@@ -99,9 +100,18 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_txt_discount"
             android:gravity="center"
-            tools:text="30%" />
+            tools:text="75%" />
+
 
     </RelativeLayout>
 
+    <View
+        android:id="@+id/item_populars_view"
+        android:layout_width="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_height="275dp"
+        android:background="@android:color/darker_gray"
+        android:layout_toLeftOf="@id/parent_card"/>
 
-</LinearLayout>
+
+</RelativeLayout>
