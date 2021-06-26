@@ -22,6 +22,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
     Context context;
     List<Category> categories;
 
+    public interface ClickedOnCategoryListener {
+
+        void onClick(Category category);
+
+    }
+
+    private CategoryAdapter.ClickedOnCategoryListener listener;
+
+    public void setListener(CategoryAdapter.ClickedOnCategoryListener listener) {
+
+        this.listener = listener;
+
+    }
+
     public CategoryAdapter(Context context, List<Category> categories) {
         this.context = context;
         this.categories = categories;
@@ -47,6 +61,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
         Glide.with(context).load(categories.get(position).getLink_img())
                 .centerCrop().circleCrop().into(holder.img_category);
+
+
+
+
     }
 
     @Override
@@ -64,6 +82,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
             img_category = itemView.findViewById(R.id.item_category_img);
             name_category = itemView.findViewById(R.id.item_category_name);
+
+            itemView.setOnClickListener(v -> listener.onClick(categories.get(getAdapterPosition())));
+
+
+
         }
     }
 }

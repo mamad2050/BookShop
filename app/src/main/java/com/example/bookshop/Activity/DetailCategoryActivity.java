@@ -39,10 +39,6 @@ public class DetailCategoryActivity extends AppCompatActivity {
     TextView title_toolbar;
     Bundle bundle;
 
-    /* all subs recyclerview*/
-//    RecyclerView recyclerViewAllSubs;
-//    DetailCategoryAdapter detailCategoryAdapter;
-//    List<Book> books = new ArrayList<>();
 
     /* popular books recyclerview*/
     RecyclerView recyclerPopulars;
@@ -78,16 +74,12 @@ public class DetailCategoryActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         title_toolbar = findViewById(R.id.detailCategory_activity_toolbar_txt);
-        title_toolbar.setText(bundle.getString(Key.TITLE));
+        title_toolbar.setText(bundle.getString( Key.TITLE));
 
         requestQueue = Volley.newRequestQueue(this);
 
         /* Initialize all subs recyclerview*/
-//        recyclerViewAllSubs = findViewById(R.id.activity_all_category_recyclerview);
-//        recyclerViewAllSubs.setHasFixedSize(true);
-//        recyclerViewAllSubs.setLayoutManager(new LinearLayoutManager(this));
-//        detailCategoryAdapter = new DetailCategoryAdapter(this, books);
-//        recyclerViewAllSubs.setAdapter(detailCategoryAdapter);
+
 
         /* Initialize populars recyclerview*/
         recyclerPopulars = findViewById(R.id.activity_all_category_popular_recyclerview);
@@ -117,39 +109,6 @@ public class DetailCategoryActivity extends AppCompatActivity {
     }
 
 
-//    private void getAllSubs() {
-//
-//        Response.Listener<String> listener = response -> {
-//
-//            Gson gson = new Gson();
-//            Book[] booksArray = gson.fromJson(response, Book[].class);
-//
-//            books.addAll(Arrays.asList(booksArray));
-//            detailCategoryAdapter.notifyDataSetChanged();
-//
-//        };
-//
-//        Response.ErrorListener errorListener = error -> Log.e(TAG, "getNewBooksResponse: " + error.getMessage());
-//
-//
-//        StringRequest request = new StringRequest(Request.Method.POST, Constants.LINK_DETAIL_CATEGORY, listener, errorListener) {
-//
-//            @Nullable
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//
-//
-//                HashMap<String, String> map = new HashMap<>();
-//                map.put(Key.ID, bundle.getString(Key.ID));
-//
-//
-//                return map;
-//            }
-//        };
-//
-//        requestQueue.add(request);
-//
-//    }
 
 
     private void getPopulars() {

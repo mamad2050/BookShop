@@ -19,13 +19,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/detailCategory_activity_toolbar_txt"
-            style="@style/toolbarTitleStyle"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/online_book_store" />
+            android:layout_centerHorizontal="true"
+            >
+
+            <TextView
+
+                style="@style/toolbarTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="در دسته "
+                android:layout_marginEnd="4dp"
+                />
+
+
+            <TextView
+                android:id="@+id/detailCategory_activity_toolbar_txt"
+                style="@style/toolbarTitleStyle"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+              />
+
+        </LinearLayout>
+
 
 
     </RelativeLayout>

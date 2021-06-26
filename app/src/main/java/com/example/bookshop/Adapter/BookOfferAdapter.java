@@ -2,6 +2,7 @@ package com.example.bookshop.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
@@ -15,9 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookshop.Activity.BookActivity;
 import com.example.bookshop.Global.DecimalFormatter;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.LastItem;
-import com.example.bookshop.Model.Offer;
+import com.example.bookshop.Model.ObjectOffer;
 import com.example.bookshop.Model.Book;
 import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.R;
@@ -28,12 +31,13 @@ import java.util.List;
 public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    List<Offer> data;
+    List<ObjectOffer> data;
 
-    public BookOfferAdapter(Context context, List<Offer> data) {
+    public BookOfferAdapter(Context context, List<ObjectOffer> data) {
         this.context = context;
         this.data = data;
     }
+
 
     @NonNull
     @Override
@@ -62,8 +66,17 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Book book = (Book) data.get(position).getObject();
             ((BookOfferViewHolder) holder).setBookOfferItems(book);
 
-        } else if (getItemViewType(position) == 1) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, BookActivity.class);
+                    intent.putExtra(Key.TITLE,((Book) data.get(position).getObject()).getName());
+                    context.startActivity(intent);
+                }
+            });
 
+
+        } else if (getItemViewType(position) == 1) {
             FirstItemOffer firstItemOffer = (FirstItemOffer) data.get(position).getObject();
             ((FirstItemViewHolder) holder).setFirstItem(firstItemOffer);
         } else if (getItemViewType(position) == 2) {

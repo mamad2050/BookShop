@@ -2,6 +2,7 @@ package com.example.bookshop.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookshop.Activity.BookActivity;
 import com.example.bookshop.Global.DecimalFormatter;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Book;
 import com.example.bookshop.Model.FirstItemOffer;
 import com.example.bookshop.Model.LastItem;
-import com.example.bookshop.Model.Offer;
+import com.example.bookshop.Model.ObjectOffer;
 import com.example.bookshop.R;
 
 import java.util.List;
@@ -25,9 +28,9 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     Context context;
-    List<Offer> data;
+    List<ObjectOffer> data;
 
-    public BookNewAdapter(Context context, List<Offer> data) {
+    public BookNewAdapter(Context context, List<ObjectOffer> data) {
         this.context = context;
         this.data = data;
     }
@@ -59,6 +62,15 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (getItemViewType(position) == 0) {
             Book book = (Book) data.get(position).getObject();
             ((BookNewAdapter.BookNewsViewHolder) holder).setBookNewsItems(book);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, BookActivity.class);
+                    intent.putExtra(Key.TITLE,((Book) data.get(position).getObject()).getName());
+                    context.startActivity(intent);
+                }
+            });
 
         } else if (getItemViewType(position) == 1) {
             FirstItemOffer firstItemOffer = (FirstItemOffer) data.get(position).getObject();

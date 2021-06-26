@@ -1,5 +1,6 @@
 package com.example.bookshop.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,16 +18,18 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Activity.DetailCategoryActivity;
 import com.example.bookshop.Adapter.BookNewAdapter;
 import com.example.bookshop.Adapter.BookOfferAdapter;
 import com.example.bookshop.Adapter.CategoryAdapter;
 import com.example.bookshop.Adapter.PublisherAdapter;
 import com.example.bookshop.Adapter.SecondBannerAdapter;
 import com.example.bookshop.Adapter.SliderAdapter;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.Book;
 import com.example.bookshop.Model.LastItem;
-import com.example.bookshop.Model.Offer;
+import com.example.bookshop.Model.ObjectOffer;
 import com.example.bookshop.Model.Banner;
 import com.example.bookshop.Global.Constants;
 import com.example.bookshop.Model.Category;
@@ -61,7 +64,7 @@ public class HomeFragment extends Fragment {
 
 
     /*Book Offer*/
-    List<Offer> listOffer = new ArrayList<>();
+    List<ObjectOffer> listOffer = new ArrayList<>();
     BookOfferAdapter bookOfferAdapter;
     RecyclerView recyclerViewBookOffer;
 
@@ -72,7 +75,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerViewSecondBanner;
 
     /*Book News*/
-    List<Offer> listNews = new ArrayList<>();
+    List<ObjectOffer> listNews = new ArrayList<>();
     BookNewAdapter bookNewAdapter;
     RecyclerView recyclerViewNewBooks;
 
@@ -93,6 +96,14 @@ public class HomeFragment extends Fragment {
         getSecondBannerResponse();
         getNewBooksResponse();
         getPublisherResponse();
+
+        categoryAdapter.setListener(category -> {
+
+            Intent intent = new Intent(getContext(), DetailCategoryActivity.class);
+            intent.putExtra(Key.ID, category.getId());
+            intent.putExtra(Key.TITLE,category.getName_fa());
+            startActivity(intent);
+        });
 
         return view;
     }
@@ -128,7 +139,7 @@ public class HomeFragment extends Fragment {
 
         /*First Object Item For Book Offer Recycler View*/
         FirstItemOffer firstItemOffer = new FirstItemOffer("محصولات تخفیف دار فروشگاه", "http://192.168.1.165/book%20store/icons/offer.png");
-        listOffer.add(new Offer(1, firstItemOffer));
+        listOffer.add(new ObjectOffer(1, firstItemOffer));
         bookOfferAdapter = new BookOfferAdapter(getContext(), listOffer);
         recyclerViewBookOffer.setAdapter(bookOfferAdapter);
 
@@ -149,7 +160,7 @@ public class HomeFragment extends Fragment {
 
         /*InitializeFirst Object Item For Book News Recycler View*/
         FirstItemOffer firstItemNews = new FirstItemOffer("جدیدترین محصولات فروشگاه", "http://192.168.1.165/book%20store/icons/new.png");
-        listNews.add(new Offer(1, firstItemNews));
+        listNews.add(new ObjectOffer(1, firstItemNews));
 
         bookNewAdapter = new BookNewAdapter(getContext(), listNews);
         recyclerViewNewBooks.setAdapter(bookNewAdapter);
@@ -281,12 +292,12 @@ public class HomeFragment extends Fragment {
             Book[] arrayBook = gson.fromJson(response, Book[].class);
 
             for (Book bookOffer : arrayBook) {
-                listOffer.add(new Offer(0, bookOffer));
+                listOffer.add(new ObjectOffer(0, bookOffer));
             }
             bookOfferAdapter.notifyDataSetChanged();
             /*last item for new books recyclerview*/
             LastItem lastItem = new LastItem(R.string.show_all, R.drawable.forward);
-            listOffer.add(new Offer(2, lastItem));
+            listOffer.add(new ObjectOffer(2, lastItem));
             /*                               */
 
 
@@ -319,13 +330,13 @@ public class HomeFragment extends Fragment {
             Book[] bookNewsArray = gson.fromJson(response, Book[].class);
 
             for (Book bookOffer : bookNewsArray) {
-                listNews.add(new Offer(0, bookOffer));
+                listNews.add(new ObjectOffer(0, bookOffer));
             }
             bookNewAdapter.notifyDataSetChanged();
 
             /*last item for new books recyclerview*/
             LastItem lastItem = new LastItem(R.string.show_all, R.drawable.forward);
-            listNews.add(new Offer(2, lastItem));
+            listNews.add(new ObjectOffer(2, lastItem));
             /*                               */
 
         }, error -> Log.e(TAG, "getNewBooksResponse: " + error.getMessage()));

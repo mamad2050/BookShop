@@ -1,11 +1,11 @@
 package com.example.bookshop.Model;
 
-public class Offer {
+public class ObjectOffer {
 
     private int type ;
     private Object object;
 
-    public Offer(int type, Object object) {
+    public ObjectOffer(int type, Object object) {
         this.type = type;
         this.object = object;
     }
