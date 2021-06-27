@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
-    android:layout_height="300dp"
+    android:layout_height="320dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="20dp"
     android:layout_marginEnd="8dp"
@@ -35,34 +35,72 @@
             android:maxLines="2"
             tools:text="Klara and the Sun" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:gravity="center"
+            android:text="استیون هاوکینگز"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/item_book_news_bookName_txt"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp">
+            android:id="@+id/item_book_news_author_txt"
+            android:layout_below="@id/item_book_news_bookName_txt"/>
+
+
 
             <TextView
-                android:id="@+id/item_book_news_finalPrice_txt"
-                style="@style/finalPriceStyle"
+                android:id="@+id/item_book_news_discount_txt"
+                style="@style/discountStyle"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_book_news_author_txt"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_txt_discount"
+                android:gravity="center"
+                tools:text="30%" />
+
+            <LinearLayout
+                android:id="@+id/price_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:textColor="@color/black"
-                tools:text="25,000" />
+                android:layout_below="@id/item_book_news_author_txt"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:id="@+id/item_book_news_finalPrice_txt"
+                    style="@style/finalPriceStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/black"
+                    tools:text="25,000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/toman"
+                    android:fontFamily="@font/iran_yekan_light"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
 
             <TextView
 
-                android:textColor="@color/black"
-                android:textSize="10sp"
+                android:id="@+id/item_book_news_price_txt"
+                style="@style/priceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/toman" />
-
-        </LinearLayout>
-
+                android:layout_below="@id/price_layout"
+                android:layout_alignStart="@id/price_layout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                tools:text="41,000" />
 
     </RelativeLayout>
 

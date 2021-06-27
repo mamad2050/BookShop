@@ -3,6 +3,7 @@ package com.example.bookshop.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
@@ -69,19 +70,7 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, BookActivity.class);
 
-                intent.putExtra(Key.ID,((Book) data.get(position).getObject()).getId());
-                intent.putExtra(Key.TITLE,((Book) data.get(position).getObject()).getName());
-                intent.putExtra(Key.AUTHOR,((Book) data.get(position).getObject()).getAuthor());
-                intent.putExtra(Key.DISCOUNT,((Book) data.get(position).getObject()).getDiscount());
-                intent.putExtra(Key.PRICE,((Book) data.get(position).getObject()).getPrice());
-                intent.putExtra(Key.FINAL_PRICE,((Book) data.get(position).getObject()).getFinal_price());
-                intent.putExtra(Key.PUBLISH,((Book) data.get(position).getObject()).getPublish_date());
-                intent.putExtra(Key.SOLD,((Book) data.get(position).getObject()).getSold());
-                intent.putExtra(Key.IMG,((Book) data.get(position).getObject()).getLink_img());
-                intent.putExtra(Key.PAGES,((Book) data.get(position).getObject()).getPages());
-                intent.putExtra(Key.GENRE,((Book) data.get(position).getObject()).getGenre());
-                intent.putExtra(Key.DISCOUNT,((Book) data.get(position).getObject()).getDiscount());
-                intent.putExtra(Key.DESCRIPTION,((Book) data.get(position).getObject()).getDescription());
+                intent.putExtra(Key.ID, ((Book) data.get(position).getObject()).getId());
 
                 context.startActivity(intent);
             });
@@ -125,15 +114,13 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             txt_title_firstAmazing.setText(firstItemOffer.getTitle());
             Glide.with(context).load(firstItemOffer.getLink_img()).into(img_firstAmazing);
-
         }
 
     }
 
-
     /*View Holder for Book Offer */
     public class BookOfferViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_discount, txt_price, txt_bookName, txt_final_price;
+        TextView txt_discount, txt_price, txt_bookName, txt_final_price ,txt_author;
         ImageView img_book;
 
         public BookOfferViewHolder(@NonNull View itemView) {
@@ -144,13 +131,14 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             txt_final_price = itemView.findViewById(R.id.item_book_offer_finalPrice_txt);
             txt_bookName = itemView.findViewById(R.id.item_book_offer_bookName_txt);
             img_book = itemView.findViewById(R.id.item_book_offer_img);
+            txt_author = itemView.findViewById(R.id.item_book_offer_author_txt);
         }
 
         @SuppressLint("SetTextI18n")
         public void setBookOfferItems(Book book) {
 
             txt_bookName.setText(book.getName());
-
+            txt_author.setText(book.getAuthor());
 
             int discount = Integer.parseInt(book.getDiscount());
             txt_discount.setText(DecimalFormatter.convert(discount) + "%");

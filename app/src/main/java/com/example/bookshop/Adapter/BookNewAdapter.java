@@ -3,6 +3,9 @@ package com.example.bookshop.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,13 +66,12 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Book book = (Book) data.get(position).getObject();
             ((BookNewAdapter.BookNewsViewHolder) holder).setBookNewsItems(book);
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, BookActivity.class);
-                    intent.putExtra(Key.TITLE,((Book) data.get(position).getObject()).getName());
-                    context.startActivity(intent);
-                }
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, BookActivity.class);
+
+                intent.putExtra(Key.ID, ((Book) data.get(position).getObject()).getId());
+
+                context.startActivity(intent);
             });
 
         } else if (getItemViewType(position) == 1) {
@@ -116,7 +118,8 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     /*View Holder for Book News */
     public class BookNewsViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_bookName, txt_final_price;
+
+        TextView txt_bookName, txt_final_price, txt_price, txt_discount, txt_author;
         ImageView img_book;
 
         public BookNewsViewHolder(@NonNull View itemView) {
@@ -124,17 +127,46 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             txt_final_price = itemView.findViewById(R.id.item_book_news_finalPrice_txt);
             txt_bookName = itemView.findViewById(R.id.item_book_news_bookName_txt);
+            txt_price = itemView.findViewById(R.id.item_book_news_price_txt);
+            txt_discount = itemView.findViewById(R.id.item_book_news_discount_txt);
             img_book = itemView.findViewById(R.id.item_book_news_img);
+            txt_author = itemView.findViewById(R.id.item_book_news_author_txt);
         }
 
         @SuppressLint("SetTextI18n")
         public void setBookNewsItems(Book book) {
 
             txt_bookName.setText(book.getName());
+            txt_author.setText(book.getAuthor());
+
+
+            int discount = Integer.parseInt(book.getDiscount());
+            /*if discount == 0  -> discount layout invisible else visible*/
+            if (discount == 0) {
+                txt_discount.setVisibility(View.INVISIBLE);
+            } else {
+
+                txt_discount.setText(DecimalFormatter.convert(discount) + "%");
+            }
 
             /*set Final Price*/
-            int finalPrice = Integer.parseInt(book.getPrice());
+            int finalPrice = Integer.parseInt(book.getFinal_price());
             txt_final_price.setText(DecimalFormatter.convert(finalPrice));
+
+
+            /*Scratch Original Price*/
+            int price = Integer.parseInt(book.getPrice());
+
+
+            /*if discount == 0  -> price  invisible else visible*/
+            if (price == finalPrice) {
+                txt_price.setVisibility(View.INVISIBLE);
+            } else {
+                SpannableString spannableString = new SpannableString(DecimalFormatter.convert(price));
+                spannableString.setSpan(new StrikethroughSpan(), 0, book.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                txt_price.setText(spannableString);
+            }
+
 
             Glide.with(context).load(book.getLink_img()).into(img_book);
 
