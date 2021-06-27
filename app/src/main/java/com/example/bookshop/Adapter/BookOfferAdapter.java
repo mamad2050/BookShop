@@ -66,13 +66,22 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Book book = (Book) data.get(position).getObject();
             ((BookOfferViewHolder) holder).setBookOfferItems(book);
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, BookActivity.class);
-                    intent.putExtra(Key.TITLE,((Book) data.get(position).getObject()).getName());
-                    context.startActivity(intent);
-                }
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, BookActivity.class);
+
+                intent.putExtra(Key.ID,((Book) data.get(position).getObject()).getId());
+                intent.putExtra(Key.TITLE,((Book) data.get(position).getObject()).getName());
+                intent.putExtra(Key.AUTHOR,((Book) data.get(position).getObject()).getAuthor());
+                intent.putExtra(Key.DISCOUNT,((Book) data.get(position).getObject()).getDiscount());
+                intent.putExtra(Key.PRICE,((Book) data.get(position).getObject()).getPrice());
+                intent.putExtra(Key.FINAL_PRICE,((Book) data.get(position).getObject()).getFinal_price());
+                intent.putExtra(Key.PUBLISH,((Book) data.get(position).getObject()).getPublish_date());
+                intent.putExtra(Key.SOLD,((Book) data.get(position).getObject()).getSold());
+                intent.putExtra(Key.IMG,((Book) data.get(position).getObject()).getLink_img());
+                intent.putExtra(Key.PAGES,((Book) data.get(position).getObject()).getPages());
+                intent.putExtra(Key.GENRE,((Book) data.get(position).getObject()).getGenre());
+                intent.putExtra(Key.DISCOUNT,((Book) data.get(position).getObject()).getDiscount());
+                context.startActivity(intent);
             });
 
 
