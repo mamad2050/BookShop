@@ -11,5 +11,6 @@
     <color name="editText_textColor">@color/black</color>
     <color name="bookPriceColor">#4A974D</color>
     <color name="categoryCardColor">#EBF3F2</color>
-
+    <color name="bookActivityToolbar">#E91E63</color>
+<!-- #BE05EC-->
 </resources>

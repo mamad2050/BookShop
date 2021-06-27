@@ -2,7 +2,7 @@ package com.example.bookshop.Model;
 
 public class Book {
 
-    private String id, category_id, name, link_img, price, discount, brand, final_price, author, pages, publish_date, sold, genre;
+    private String id, category_id, name, link_img, price, discount, brand, final_price, author, pages, publish_date, sold, genre,description;
 
 
     public String getId() {
@@ -67,4 +67,7 @@ public class Book {
         return genre;
     }
 
+    public String getDescription() {
+        return description;
+    }
 }

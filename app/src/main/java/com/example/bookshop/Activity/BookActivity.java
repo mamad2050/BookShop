@@ -29,6 +29,7 @@ public class BookActivity extends AppCompatActivity {
     TextView txt_pages;
     TextView txt_sold;
     TextView txt_publish_date;
+    TextView txt_description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class BookActivity extends AppCompatActivity {
         txt_publish_date = findViewById(R.id.book_activity_book_date);
         txt_genre = findViewById(R.id.book_activity_book_genre);
         txt_discount = findViewById(R.id.activity_book_discount);
+        txt_description = findViewById(R.id.book_activity_description);
 
 
         Glide.with(this).load(bundle.getString(Key.IMG)).into(book_img);
@@ -56,34 +58,33 @@ public class BookActivity extends AppCompatActivity {
         txt_author.setText(bundle.getString(Key.AUTHOR));
         txt_author2.setText(bundle.getString(Key.AUTHOR));
         txt_genre.setText(bundle.getString(Key.GENRE));
-
+        txt_description.setText(bundle.getString(Key.DESCRIPTION));
 
 
         int pages = Integer.parseInt(bundle.getString(Key.PAGES));
-        txt_pages.setText(DecimalFormatter.formatted(pages));
+        txt_pages.setText(DecimalFormatter.convert(pages));
 
 
-
-        String date = bundle.getString(Key.PUBLISH);
-        txt_publish_date.setText(date);
+        int date = Integer.parseInt(bundle.getString(Key.PUBLISH));
+        txt_publish_date.setText(DecimalFormatter.convert2(date));
 
 
         int sold = Integer.parseInt(bundle.getString(Key.SOLD));
-        txt_sold.setText(DecimalFormatter.formatted(sold));
+        txt_sold.setText(DecimalFormatter.convert(sold)+" نسخه");
 
 
         int price = Integer.parseInt(bundle.getString(Key.PRICE));
-        SpannableString spannableString = new SpannableString(DecimalFormatter.formatted(price));
+        SpannableString spannableString = new SpannableString(DecimalFormatter.convert(price));
         spannableString.setSpan(new StrikethroughSpan(), 0, bundle.getString(Key.PRICE).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         txt_price.setText(spannableString);
 
 
         int finalPrice = Integer.parseInt(bundle.getString(Key.FINAL_PRICE));
-        txt_final_price.setText(DecimalFormatter.formatted(finalPrice));
+        txt_final_price.setText(DecimalFormatter.convert(finalPrice));
 
 
         int discount = Integer.parseInt(bundle.getString(Key.DISCOUNT));
-        txt_discount.setText(DecimalFormatter.formatted(discount)+"%");
+        txt_discount.setText(DecimalFormatter.convert(discount)+"%");
 
 
 

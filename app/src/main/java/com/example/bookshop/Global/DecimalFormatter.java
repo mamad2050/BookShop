@@ -8,11 +8,19 @@ import java.text.DecimalFormat;
 
 public class DecimalFormatter {
 
-    public static String formatted(int number){
+    public static String convert(int number){
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         return decimalFormat.format(number);
 
     }
+
+    public static String convert2(int number){
+
+        DecimalFormat decimalFormat = new DecimalFormat("####,####");
+        return decimalFormat.format(number);
+
+    }
+
 
 }

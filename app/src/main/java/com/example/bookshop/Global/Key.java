@@ -12,4 +12,5 @@ public class Key {
     public static String TITLE = "title";
     public static String PAGES = "pages";
     public static String GENRE = "genre";
+    public static String DESCRIPTION = "description";
 }

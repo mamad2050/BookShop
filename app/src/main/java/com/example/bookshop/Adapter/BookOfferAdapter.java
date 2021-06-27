@@ -81,6 +81,8 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 intent.putExtra(Key.PAGES,((Book) data.get(position).getObject()).getPages());
                 intent.putExtra(Key.GENRE,((Book) data.get(position).getObject()).getGenre());
                 intent.putExtra(Key.DISCOUNT,((Book) data.get(position).getObject()).getDiscount());
+                intent.putExtra(Key.DESCRIPTION,((Book) data.get(position).getObject()).getDescription());
+
                 context.startActivity(intent);
             });
 
@@ -151,16 +153,16 @@ public class BookOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
             int discount = Integer.parseInt(book.getDiscount());
-            txt_discount.setText(DecimalFormatter.formatted(discount) + "%");
+            txt_discount.setText(DecimalFormatter.convert(discount) + "%");
 
             /*set Final Price*/
             int finalPrice = Integer.parseInt(book.getFinal_price());
-            txt_final_price.setText(DecimalFormatter.formatted(finalPrice));
+            txt_final_price.setText(DecimalFormatter.convert(finalPrice));
 
 
             /*Scratch Original Price*/
             int price = Integer.parseInt(book.getPrice());
-            SpannableString spannableString = new SpannableString(DecimalFormatter.formatted(price));
+            SpannableString spannableString = new SpannableString(DecimalFormatter.convert(price));
             spannableString.setSpan(new StrikethroughSpan(), 0, book.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             txt_price.setText(spannableString);
 

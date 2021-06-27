@@ -41,7 +41,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
 
         int final_price = Integer.parseInt(data.get(position).getFinal_price());
 
-        holder.txt_finalPrice.setText(DecimalFormatter.formatted(final_price));
+        holder.txt_finalPrice.setText(DecimalFormatter.convert(final_price));
 
         holder.txt_name.setText(data.get(position).getName());
         holder.txt_author.setText(data.get(position).getAuthor());
@@ -53,7 +53,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
             holder.txt_price.setText("");
         } else {
             int price = Integer.parseInt(data.get(position).getPrice());
-            SpannableString spannableString = new SpannableString(DecimalFormatter.formatted(price));
+            SpannableString spannableString = new SpannableString(DecimalFormatter.convert(price));
             spannableString.setSpan(new StrikethroughSpan(), 0, data.get(position).getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             holder.txt_price.setText(spannableString);
         }
@@ -67,7 +67,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
         /*don't show discount for other book */
         else {
             int discount = Integer.parseInt(data.get(position).getDiscount());
-            holder.txt_discount.setText(DecimalFormatter.formatted(discount) + "%");
+            holder.txt_discount.setText(DecimalFormatter.convert(discount) + "%");
         }
 
 

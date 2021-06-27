@@ -134,7 +134,7 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             /*set Final Price*/
             int finalPrice = Integer.parseInt(book.getPrice());
-            txt_final_price.setText(DecimalFormatter.formatted(finalPrice));
+            txt_final_price.setText(DecimalFormatter.convert(finalPrice));
 
             Glide.with(context).load(book.getLink_img()).into(img_book);
 

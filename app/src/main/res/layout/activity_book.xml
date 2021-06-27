@@ -13,7 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#BE05EC"
+        android:background="@color/bookActivityToolbar"
         android:elevation="2dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,12 +109,32 @@
                 android:textSize="15sp"
                 tools:text="شبهای ببره" />
 
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/book_activity_book_author"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="توضیحات"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/book_activity_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_description"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"/>
+
 
             <TextView
                 android:id="@+id/txt_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/book_activity_book_author"
+                android:layout_below="@id/book_activity_description"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:text="اطلاعات کتاب"
@@ -180,9 +200,9 @@
                         android:background="@android:color/darker_gray" />
 
                     <LinearLayout
-android:layout_marginTop="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -214,9 +234,9 @@ android:layout_marginTop="8dp"
                         android:background="@android:color/darker_gray" />
 
                     <LinearLayout
-                        android:layout_marginTop="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -389,25 +409,25 @@ android:layout_marginTop="8dp"
     </ScrollView>
 
     <RelativeLayout
-        android:background="#BE05EC"
         android:id="@+id/parent_cart"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_alignParentBottom="true"
+        android:background="@color/bookActivityToolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:backgroundTint="@color/white"
             android:id="@+id/book_activity_add_to_cart_btn"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:textColor="#BE05EC"
+            android:backgroundTint="@color/white"
             android:text="اضافه به سبد خرید"
+            android:textColor="@color/bookActivityToolbar"
             android:textStyle="bold" />
 
 
@@ -421,22 +441,22 @@ android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp">
 
             <TextView
-                android:textColor="@color/white"
                 android:id="@+id/book_activity_book_final_price"
                 style="@style/finalPriceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
+                android:textColor="@color/white"
 
                 android:textSize="15sp"
                 tools:text="25,000" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/iran_yekan_light"
                 android:text="@string/toman"
+                android:textColor="@color/white"
 
                 android:textSize="12sp" />
 
@@ -446,7 +466,6 @@ android:layout_marginTop="8dp"
 
             android:id="@+id/book_activity_book_price"
             style="@style/priceStyle"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/price_layout"
@@ -454,6 +473,7 @@ android:layout_marginTop="8dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
             android:textSize="14sp"
             tools:text="41,000" />
 
@@ -463,13 +483,13 @@ android:layout_marginTop="8dp"
             style="@style/discountStyle"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/price_layout"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
-            android:textColor="#BE05EC"
+            android:layout_toStartOf="@id/price_layout"
             android:background="@drawable/bg_txt_discount"
             android:backgroundTint="@color/white"
             android:gravity="center"
+            android:textColor="@color/bookActivityToolbar"
             tools:text="30%" />
 
     </RelativeLayout>
