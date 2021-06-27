@@ -1,7 +1,12 @@
 package com.example.bookshop.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bookshop.Global.Key;
@@ -16,6 +21,7 @@ Bundle bundle;
         setContentView(R.layout.activity_book);
 
         bundle = getIntent().getExtras();
+
         Toast.makeText(this, bundle.getString(Key.TITLE), Toast.LENGTH_SHORT).show();
     }
 }

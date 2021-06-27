@@ -4,28 +4,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/purple_700"
+
     android:layout_height="match_parent"
     tools:context=".Activity.BookActivity">
 
-
     <RelativeLayout
 
-        android:background="@drawable/bg_bottom_book"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="300dp">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolBarColor"
+        android:elevation="2dp"
+        android:padding="8dp">
 
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/book_activity_back_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_baseline_arrow_back_24"/>
+
+        <ImageView
+            android:id="@+id/book_activity_back_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_baseline_arrow_back_24"/>
+
+
+        <ImageView
+            android:id="@+id/book_activity_back_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_baseline_arrow_back_24"/>
+
+
+
+
 
 
     </RelativeLayout>
-
-
-
 
 
 </RelativeLayout>
