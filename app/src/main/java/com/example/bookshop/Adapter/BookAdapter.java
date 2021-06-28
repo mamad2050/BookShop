@@ -25,6 +25,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
 
     Context context;
     List<Book> data;
+    BookAdapter.onItemClickedListener listener;
+
+    public interface onItemClickedListener {
+
+        void onCLick(Book book);
+
+    }
+
+    public void setListener(BookAdapter.onItemClickedListener listener) {
+        this.listener = listener;
+    }
 
 
     public BookAdapter(Context context, List<Book> data) {
@@ -107,6 +118,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
             txt_price = itemView.findViewById(R.id.item_populars_price);
             txt_discount = itemView.findViewById(R.id.item_populars_discount);
             verticalLine =itemView.findViewById(R.id.item_populars_view);
+
+            itemView.setOnClickListener(e -> listener.onCLick(data.get(getAdapterPosition())));
 
         }
     }

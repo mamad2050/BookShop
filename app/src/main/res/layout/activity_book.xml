@@ -100,7 +100,6 @@
                 tools:text="شبهای ببره" />
 
 
-
             <TextView
                 android:id="@+id/book_activity_book_author"
                 android:layout_width="match_parent"
@@ -110,7 +109,6 @@
                 android:gravity="center"
                 android:textSize="15sp"
                 tools:text="شبهای ببره" />
-
 
 
             <TextView
@@ -131,8 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_description"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp" />
 
 
             <TextView
@@ -143,18 +141,19 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:text="اطلاعات کتاب"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
 
             <androidx.cardview.widget.CardView
-
+                android:layout_centerHorizontal="true"
+                android:id="@+id/card_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_info"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 app:cardBackgroundColor="#DED1F1"
                 app:cardCornerRadius="8dp">
@@ -408,6 +407,45 @@
 
             </androidx.cardview.widget.CardView>
 
+
+            <androidx.cardview.widget.CardView
+                android:layout_below="@id/card_info"
+                android:id="@+id/activity_book_card_relate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginStart="9dp"
+                        android:id="@+id/txt_relate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:text="کالاهای مرتبط" />
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+
+                        android:id="@+id/book_activity_relates_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_relate"
+                        android:layout_marginTop="8dp" />
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
         </RelativeLayout>
 
 
@@ -427,7 +465,7 @@
         <Button
             android:id="@+id/book_activity_add_to_cart_btn"
             android:layout_width="200dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:backgroundTint="@color/white"

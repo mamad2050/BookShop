@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -66,6 +67,26 @@ public class DetailCategoryActivity extends AppCompatActivity {
         getPopulars();
         getNewBooks();
         getOfferBook();
+
+        bookOfferCategoryAdapter.setListener(book -> {
+            Intent intent = new Intent(DetailCategoryActivity.this, BookActivity.class);
+            intent.putExtra(Key.ID, book.getId());
+            startActivity(intent);
+        });
+
+        bookAdapter.setListener(book -> {
+            Intent intent = new Intent(DetailCategoryActivity.this, BookActivity.class);
+            intent.putExtra(Key.ID, book.getId());
+            startActivity(intent);
+        });
+
+
+        newBookAdapter.setListener(book -> {
+            Intent intent = new Intent(DetailCategoryActivity.this,BookActivity.class);
+            intent.putExtra(Key.ID,book.getId());
+            startActivity(intent);
+        });
+
     }
 
 
@@ -74,7 +95,7 @@ public class DetailCategoryActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         title_toolbar = findViewById(R.id.detailCategory_activity_toolbar_txt);
-        title_toolbar.setText(bundle.getString( Key.TITLE));
+        title_toolbar.setText(bundle.getString(Key.TITLE));
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -107,8 +128,6 @@ public class DetailCategoryActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
     private void getPopulars() {

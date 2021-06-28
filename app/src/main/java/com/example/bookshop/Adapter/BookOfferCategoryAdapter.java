@@ -1,6 +1,7 @@
 package com.example.bookshop.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
@@ -23,7 +24,18 @@ import java.util.List;
 public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCategoryAdapter.Holder> {
 
     Context context;
-    List<Book>data;
+    List<Book> data;
+    onItemClickedListener listener;
+
+    public interface onItemClickedListener {
+
+        void onCLick(Book book);
+
+    }
+
+    public void setListener(onItemClickedListener listener) {
+        this.listener = listener;
+    }
 
     public BookOfferCategoryAdapter(Context context, List<Book> data) {
         this.context = context;
@@ -33,7 +45,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_off_category,parent,false));
+        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_off_category, parent, false));
     }
 
     @Override
@@ -71,7 +83,6 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
         }
 
 
-
     }
 
     @Override
@@ -98,7 +109,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
             txt_price = itemView.findViewById(R.id.item_book_off_category_price);
             txt_discount = itemView.findViewById(R.id.item_book_off_category_discount);
 
-
+            itemView.setOnClickListener(e -> listener.onCLick(data.get(getAdapterPosition())));
 
         }
     }
