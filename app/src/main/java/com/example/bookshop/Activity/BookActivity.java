@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -73,6 +74,12 @@ public class BookActivity extends AppCompatActivity {
         initialize();
         getBookResponse();
         getRelatesResponse();
+
+        bookAdapter.setListener(book -> {
+            Intent intent = new Intent(BookActivity.this,BookActivity.class);
+            intent.putExtra(Key.ID,book.getId());
+            startActivity(intent);
+        });
 
     }
 
@@ -148,18 +155,19 @@ public class BookActivity extends AppCompatActivity {
                 SpannableString spannableString = new SpannableString(DecimalFormatter.convert(price));
                 spannableString.setSpan(new StrikethroughSpan(), 0, book.getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 txt_price.setText(spannableString);
-
+            }
 
                 int discount = Integer.parseInt(book.getDiscount());
 
                 if (discount == 0) {
                     txt_discount.setVisibility(View.INVISIBLE);
-                } else {
+                }
+                else {
                     txt_discount.setText(new StringBuilder(DecimalFormatter.convert(discount) + "%"));
                 }
 
 
-            }
+           
         };
 
         Response.ErrorListener errorListener = error -> Log.e(TAG, "onErrorResponse: " + error.getMessage());
@@ -195,13 +203,13 @@ public class BookActivity extends AppCompatActivity {
 
         Response.ErrorListener errorListener = error -> Log.e(TAG, "onErrorResponse: " + error.getMessage());
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.LINK_RELATE_BOOKS, listener, errorListener) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.LINK_RELATE_BOOKS, listener, errorListener) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put(Key.ID,bundle.getString(Key.ID));
+                hashMap.put(Key.CATEGORY_ID,book.getCategory_id());
                 return hashMap;
             }
 

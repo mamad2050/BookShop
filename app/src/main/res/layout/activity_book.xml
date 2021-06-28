@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
 
+    android:background="#F8F6F7"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -155,7 +156,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
-                app:cardBackgroundColor="#DED1F1"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -413,7 +414,7 @@
                 android:id="@+id/activity_book_card_relate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 app:cardElevation="2dp">
 
                 <RelativeLayout
