@@ -74,18 +74,18 @@ public class DetailCategoryActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        bookAdapter.setListener(book -> {
-            Intent intent = new Intent(DetailCategoryActivity.this, BookActivity.class);
-            intent.putExtra(Key.ID, book.getId());
-            startActivity(intent);
-        });
-
-
-        newBookAdapter.setListener(book -> {
-            Intent intent = new Intent(DetailCategoryActivity.this,BookActivity.class);
-            intent.putExtra(Key.ID,book.getId());
-            startActivity(intent);
-        });
+//        bookAdapter.setListener(book -> {
+//            Intent intent = new Intent(DetailCategoryActivity.this, BookActivity.class);
+//            intent.putExtra(Key.ID, book.getId());
+//            startActivity(intent);
+//        });
+//
+//
+//        newBookAdapter.setListener(book -> {
+//            Intent intent = new Intent(DetailCategoryActivity.this,BookActivity.class);
+//            intent.putExtra(Key.ID,book.getId());
+//            startActivity(intent);
+//        });
 
     }
 
@@ -139,6 +139,8 @@ public class DetailCategoryActivity extends AppCompatActivity {
 
             popularBooks.addAll(Arrays.asList(populars));
             bookAdapter.notifyDataSetChanged();
+
+
 
         };
 

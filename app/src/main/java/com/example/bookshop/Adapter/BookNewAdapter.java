@@ -70,6 +70,7 @@ public class BookNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 Intent intent = new Intent(context, BookActivity.class);
 
                 intent.putExtra(Key.ID, ((Book) data.get(position).getObject()).getId());
+                intent.putExtra(Key.CATEGORY_ID ,((Book) data.get(position).getObject()).getCategory_id());
 
                 context.startActivity(intent);
             });

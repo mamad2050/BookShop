@@ -23,7 +23,7 @@
             style="@style/titleStyle"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/item_populars_img"
             android:layout_centerHorizontal="true"
             android:text="سرزمین عجایب" />

@@ -1,6 +1,7 @@
 package com.example.bookshop.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
@@ -14,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookshop.Activity.BookActivity;
 import com.example.bookshop.Global.DecimalFormatter;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Book;
 import com.example.bookshop.R;
 
@@ -25,17 +28,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
 
     Context context;
     List<Book> data;
-    BookAdapter.onItemClickedListener listener;
-
-    public interface onItemClickedListener {
-
-        void onCLick(Book book);
-
-    }
-
-    public void setListener(BookAdapter.onItemClickedListener listener) {
-        this.listener = listener;
-    }
+//    BookAdapter.onItemClickedListener listener;
+//
+//    public interface onItemClickedListener {
+//
+//        void onCLick(Book book);
+//
+//    }
+//
+//    public void setListener(BookAdapter.onItemClickedListener listener) {
+//        this.listener = listener;
+//    }
 
 
     public BookAdapter(Context context, List<Book> data) {
@@ -119,7 +122,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.Holder> {
             txt_discount = itemView.findViewById(R.id.item_populars_discount);
             verticalLine =itemView.findViewById(R.id.item_populars_view);
 
-            itemView.setOnClickListener(e -> listener.onCLick(data.get(getAdapterPosition())));
+            itemView.setOnClickListener(e -> {
+
+
+            Intent intent = new Intent(context, BookActivity.class);
+            intent.putExtra(Key.ID,data.get(getAdapterPosition()).getId());
+            intent.putExtra(Key.CATEGORY_ID,data.get(getAdapterPosition()).getCategory_id());
+            context.startActivity(intent);
+
+
+            });
 
         }
     }
