@@ -71,21 +71,10 @@ public class DetailCategoryActivity extends AppCompatActivity {
         bookOfferCategoryAdapter.setListener(book -> {
             Intent intent = new Intent(DetailCategoryActivity.this, BookActivity.class);
             intent.putExtra(Key.ID, book.getId());
+            intent.putExtra(Key.CATEGORY_ID, book.getCategory_id());
             startActivity(intent);
         });
 
-//        bookAdapter.setListener(book -> {
-//            Intent intent = new Intent(DetailCategoryActivity.this, BookActivity.class);
-//            intent.putExtra(Key.ID, book.getId());
-//            startActivity(intent);
-//        });
-//
-//
-//        newBookAdapter.setListener(book -> {
-//            Intent intent = new Intent(DetailCategoryActivity.this,BookActivity.class);
-//            intent.putExtra(Key.ID,book.getId());
-//            startActivity(intent);
-//        });
 
     }
 

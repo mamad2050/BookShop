@@ -11,6 +11,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +32,7 @@ import com.example.bookshop.Global.DecimalFormatter;
 import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Book;
 import com.example.bookshop.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -70,6 +72,20 @@ public class BookActivity extends AppCompatActivity {
     BookAdapter bookAdapter;
     List<Book> relateBooks = new ArrayList<>();
 
+    /*ToolBar Options */
+
+    ImageView img_back;
+    ImageView img_more;
+    ImageView img_like;
+    ImageView img_cart;
+
+    /*Bottom Sheet*/
+
+    TextView txt_compare_bottomSheet;
+    TextView txt_share_bottomSheet;
+    BottomSheetDialog bottomSheetDialog;
+    View layout_bottomSheet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +93,24 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         initialize();
+
         getBookResponse();
         getSimilarProduct();
+
+        img_more.setOnClickListener(v -> {
+
+            bottomSheetDialog = new BottomSheetDialog(BookActivity.this);
+            layout_bottomSheet = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_bottom_sheet,
+                    findViewById(R.id.parent_bottomSheet), false);
+
+            txt_compare_bottomSheet = layout_bottomSheet.findViewById(R.id.bottom_sheet_compare);
+            txt_share_bottomSheet = layout_bottomSheet.findViewById(R.id.bottom_sheet_share);
+
+
+            bottomSheetDialog.setContentView(layout_bottomSheet);
+            bottomSheetDialog.show();
+
+        });
 
     }
 
@@ -111,6 +143,13 @@ public class BookActivity extends AppCompatActivity {
         relatesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         bookAdapter = new BookAdapter(this, relateBooks);
         relatesRecyclerView.setAdapter(bookAdapter);
+
+        /*Initializing Toolbar Options*/
+
+        img_more = findViewById(R.id.book_activity_more_img);
+        img_cart = findViewById(R.id.book_activity_cart_img);
+        img_like = findViewById(R.id.book_activity_like_img);
+        img_back = findViewById(R.id.book_activity_back_img);
 
     }
 
@@ -168,7 +207,6 @@ public class BookActivity extends AppCompatActivity {
 
         int finalPrice = Integer.parseInt(book.getFinal_price());
         txt_final_price.setText(DecimalFormatter.convert(finalPrice));
-
 
 
         int discount = Integer.parseInt(book.getDiscount());

@@ -23,8 +23,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            >
+            android:layout_centerHorizontal="true">
 
             <TextView
 
@@ -32,22 +31,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="در دسته "
                 android:layout_marginEnd="4dp"
-                />
+                android:text="در دسته " />
 
 
             <TextView
                 android:id="@+id/detailCategory_activity_toolbar_txt"
                 style="@style/toolbarTitleStyle"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-              />
+                android:textStyle="bold" />
 
         </LinearLayout>
-
 
 
     </RelativeLayout>
@@ -73,26 +69,26 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_marginStart="9dp"
+
                         android:id="@+id/txt_pop"
+                        style="@style/headersStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:fontFamily="@font/iran_yekan_medium"
-                        android:text="محبوب ترین ها " />
+                        android:text="محبوب ترین محصولات " />
 
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="22dp"
+                        android:layout_alignTop="@id/txt_pop"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="8dp"
+                        style="@style/headersStyle"
                         android:layout_marginEnd="8dp"
                         android:background="@android:color/transparent"
-                        android:text="نمایش همه"
-                        android:layout_alignTop="@id/txt_pop"
+                        android:text="نمایش همه >"
                         android:textColor="#3A0AA5"
-                        android:textSize="10sp" />
+                        android:textSize="11sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
 
@@ -108,12 +104,12 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_below="@id/card_popular"
                 android:id="@+id/card_news"
-                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/card_popular"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
 
                 app:cardElevation="2dp">
 
@@ -122,26 +118,26 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_marginStart="8dp"
+
                         android:id="@+id/txt_news"
+                        style="@style/headersStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:fontFamily="@font/iran_yekan_medium"
-                        android:text="جدیدترین ها" />
+                        android:text="جدیدترین محصولات" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="22dp"
                         android:layout_alignTop="@id/txt_news"
+                        android:layout_alignParentEnd="true"
                         android:layout_marginEnd="8dp"
+                        style="@style/headersStyle"
                         android:background="@android:color/transparent"
-                        android:text="نمایش همه"
+                        android:text="نمایش همه >"
                         android:textColor="#3A0AA5"
-                        android:textSize="10sp" />
+                        android:textSize="11sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
 
@@ -157,12 +153,12 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_below="@id/card_news"
                 android:id="@+id/card_off"
-                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/card_news"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
 
                 app:cardElevation="2dp">
 
@@ -172,24 +168,23 @@
 
                     <TextView
                         android:id="@+id/txt_offs"
-                        android:layout_marginStart="8dp"
+                        style="@style/headersStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:fontFamily="@font/iran_yekan_medium"
+                        android:layout_marginStart="8dp"
                         android:text="محصولات تخفیف دار" />
-
 
 
                     <androidx.recyclerview.widget.RecyclerView
 
                         android:id="@+id/activity_detail_category_offRecyclerview"
                         android:layout_width="match_parent"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txt_offs"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp" />
 
                 </RelativeLayout>
 

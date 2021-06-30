@@ -57,6 +57,7 @@
                 android:background="@drawable/bg_like" />
 
             <ImageView
+
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/black"
                 android:id="@+id/book_activity_more_img"
@@ -103,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/book_activity_book_img"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="شبهای ببره" />
 
@@ -116,7 +117,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:textSize="15sp"
-                tools:text="شبهای ببره" />
+                tools:text="مهران مدیری" />
 
 
             <TextView
@@ -127,8 +128,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="توضیحات"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+
+                style="@style/headersStyle"
+                 />
 
             <TextView
 
@@ -146,11 +148,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/book_activity_description"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="اطلاعات کتاب"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                style="@style/headersStyle" />
 
 
             <androidx.cardview.widget.CardView
@@ -199,7 +200,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:text="شبهای برره"
-                                android:textStyle="bold" />
+                                android:textSize="14sp"
+                                style="@style/headersStyle" />
                         </RelativeLayout>
 
 
@@ -228,12 +230,13 @@
                                 android:text="نویسنده" />
 
                             <TextView
+                                android:textSize="14sp"
+                                style="@style/headersStyle"
                                 android:id="@+id/book_activity_book_author2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="شبهای برره"
-                                android:textStyle="bold" />
+                                android:text="شبهای برره"/>
                         </RelativeLayout>
 
 
@@ -262,12 +265,13 @@
                                 android:text="موضوع" />
 
                             <TextView
+                                android:textSize="14sp"
+                                style="@style/headersStyle"
                                 android:id="@+id/book_activity_book_genre"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="فلسفه"
-                                android:textStyle="bold" />
+                                android:text="فلسفه"/>
                         </RelativeLayout>
 
 
@@ -296,12 +300,13 @@
                                 android:text="ناشر" />
 
                             <TextView
+                                android:textSize="14sp"
+                                style="@style/headersStyle"
                                 android:id="@+id/book_activity_book_publisher"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="نشر چشمه"
-                                android:textStyle="bold" />
+                                android:text="نشر چشمه" />
                         </RelativeLayout>
 
 
@@ -325,17 +330,19 @@
 
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="تعداد صفحه" />
 
                             <TextView
+                                android:textSize="14sp"
+                                style="@style/headersStyle"
                                 android:id="@+id/book_activity_book_pages"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="418"
-                                android:textStyle="bold" />
+                                android:text="418" />
                         </RelativeLayout>
 
 
@@ -364,12 +371,13 @@
                                 android:text="تاریخ انتشار" />
 
                             <TextView
+                                android:textSize="14sp"
+                                style="@style/headersStyle"
                                 android:id="@+id/book_activity_book_date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="1381"
-                                android:textStyle="bold" />
+                                android:text="1381" />
                         </RelativeLayout>
 
 
@@ -398,12 +406,13 @@
                                 android:text="تعداد فروش" />
 
                             <TextView
+                                android:textSize="14sp"
+                                style="@style/headersStyle"
                                 android:id="@+id/book_activity_book_sold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="12800"
-                                android:textStyle="bold" />
+                                android:text="12800" />
                         </RelativeLayout>
 
 
@@ -433,11 +442,11 @@
                         android:id="@+id/txt_relate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_marginStart="9dp"
-                        android:fontFamily="@font/iran_yekan_medium"
-                        android:text="کالاهای مرتبط"
-                        android:textSize="15sp" />
+                      android:layout_marginTop="8dp"
+                        android:layout_marginStart="20dp"
+                        android:text="محصولات مشابه"
+                        style="@style/headersStyle"
+                        />
 
 
                     <androidx.recyclerview.widget.RecyclerView
