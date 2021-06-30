@@ -81,8 +81,8 @@ public class BookActivity extends AppCompatActivity {
 
     /*Bottom Sheet*/
 
-    TextView txt_compare_bottomSheet;
-    TextView txt_share_bottomSheet;
+    LinearLayout item_compare_bottomSheet;
+    LinearLayout item_share_bottomSheet;
     BottomSheetDialog bottomSheetDialog;
     View layout_bottomSheet;
 
@@ -93,8 +93,8 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         initialize();
-
         getBookResponse();
+
         getSimilarProduct();
 
         img_more.setOnClickListener(v -> {
@@ -103,14 +103,37 @@ public class BookActivity extends AppCompatActivity {
             layout_bottomSheet = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_bottom_sheet,
                     findViewById(R.id.parent_bottomSheet), false);
 
-            txt_compare_bottomSheet = layout_bottomSheet.findViewById(R.id.bottom_sheet_compare);
-            txt_share_bottomSheet = layout_bottomSheet.findViewById(R.id.bottom_sheet_share);
+            item_compare_bottomSheet = layout_bottomSheet.findViewById(R.id.bottom_nav_item_compare);
+            item_share_bottomSheet = layout_bottomSheet.findViewById(R.id.bottom_nav_item_share);
 
+            item_share_bottomSheet.setOnClickListener(e -> {
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT,"فروشگاه کتاب");
+                String message =  "نام محصول :" + book.getName() + "\n" + "قیمت :" + book.getFinal_price();
+                intent.putExtra(Intent.EXTRA_TEXT,message);
+                startActivity(Intent.createChooser(intent,"پاپیروس"));
+
+
+            });
+
+
+            item_compare_bottomSheet.setOnClickListener(e -> {
+
+                Intent intent =new Intent(BookActivity.this,CompareBookActivity.class);
+                intent.putExtra(Key.CATEGORY_ID,book.getCategory_id());
+                intent.putExtra(Key.BOOK_NAME,book.getName());
+                startActivity(intent);
+
+            });
 
             bottomSheetDialog.setContentView(layout_bottomSheet);
             bottomSheetDialog.show();
 
         });
+
+
 
     }
 

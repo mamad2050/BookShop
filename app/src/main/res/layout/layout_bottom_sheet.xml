@@ -9,16 +9,30 @@
     android:paddingRight="8dp">
 
 
-    <TextView
-        android:id="@+id/bottom_sheet_compare"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/bottom_nav_item_compare"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="8dp"
-        android:drawableStart="@drawable/ic_baseline_compare_24"
-        android:drawablePadding="4dp"
-        android:text="مقایسه کتاب" />
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/icons_compare" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/iran_yekan_regular"
+
+            android:text="مقایسه کتاب"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
 
     <View
@@ -27,16 +41,27 @@
         android:background="@color/black" />
 
 
-    <TextView
-        android:textColor="@color/black"
-        android:id="@+id/bottom_sheet_share"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/bottom_nav_item_share"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:drawableStart="@drawable/ic_baseline_share_24"
-        android:drawablePadding="4dp"
-        android:text="اشتراک گذاری" />
+        android:layout_marginBottom="8dp">
 
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/icons_share" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/iran_yekan_regular"
+            android:text="به اشتراک گذاری"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
 </LinearLayout>
