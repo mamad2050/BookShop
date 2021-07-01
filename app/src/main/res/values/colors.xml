@@ -13,5 +13,6 @@
     <color name="categoryCardColor">#EBF3F2</color>
     <color name="bookActivityToolbar">#FFFFFF</color>
     <color name="bookActivityColor">#E91E63</color>
+    <color name="backgroundColor">#F8F6F7</color>
 <!-- #BE05EC-->
 </resources>

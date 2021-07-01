@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -35,17 +36,30 @@ public class CompareBookActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     List<Book> relateBooks = new ArrayList<>();
     RecyclerView recyclerView;
-    BookOfferCategoryAdapter adapter ;
+    BookOfferCategoryAdapter adapter;
 
-
-    private static final String TAG = "CompareBookActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_book);
 
+        Initialize();
+        getSimilarProduct();
+
+     adapter.setListener(book -> {
+
+         Toast.makeText(this, book.getName(), Toast.LENGTH_SHORT).show();
+
+     });
+
+    }
+
+    private void Initialize() {
+
         bundle = getIntent().getExtras();
+        requestQueue = Volley.newRequestQueue(this);
+
         txt_toolbar_book = findViewById(R.id.compare_book_activity_toolbar_bookName);
         txt_toolbar_book.setText(bundle.getString(Key.BOOK_NAME));
 
@@ -55,8 +69,6 @@ public class CompareBookActivity extends AppCompatActivity {
         adapter = new BookOfferCategoryAdapter(this, relateBooks);
         recyclerView.setAdapter(adapter);
 
-        requestQueue = Volley.newRequestQueue(this);
-getSimilarProduct();
 
     }
 
