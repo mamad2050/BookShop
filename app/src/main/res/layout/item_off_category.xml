@@ -9,7 +9,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/txt"
+        android:id="@+id/item_book_off_head_txt"
         android:layout_marginStart="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,16 +22,17 @@
         android:id="@+id/view_1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/txt"
+        android:layout_below="@id/item_book_off_head_txt"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/item_book_off_category_img"
         android:layout_width="135dp"
+        android:layout_marginBottom="8dp"
         android:layout_height="185dp"
         android:layout_below="@id/view_1"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/item_book_off_category_name"
@@ -89,6 +90,7 @@
     <TextView
         android:id="@+id/item_book_off_category_discount"
         style="@style/discountStyle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout"
@@ -133,6 +135,7 @@
     </LinearLayout>
 
     <TextView
+
         android:id="@+id/item_book_off_category_price"
         style="@style/priceStyle"
         android:layout_width="wrap_content"

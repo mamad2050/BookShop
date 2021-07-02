@@ -60,26 +60,23 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
         Glide.with(context).load(data.get(position).getLink_img()).into(holder.img_book);
 
 
-        /*FullPrice For Discountable Books*/
-        if (data.get(position).getFinal_price().equals(data.get(position).getPrice())) {
-            holder.txt_price.setText("");
+        /*if discount == 0 => invisible discount and price */
+        if (data.get(position).getDiscount().equals("0")) {
+
+            holder.txt_price.setVisibility(View.INVISIBLE);
+            holder.txt_discount.setVisibility(View.INVISIBLE);
+            holder.txt_top.setText("");
+
         } else {
+
             int price = Integer.parseInt(data.get(position).getPrice());
             SpannableString spannableString = new SpannableString(DecimalFormatter.convert(price));
             spannableString.setSpan(new StrikethroughSpan(), 0, data.get(position).getPrice().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             holder.txt_price.setText(spannableString);
-        }
 
-        /*show Discount for book contain offer*/
-
-        if (data.get(position).getDiscount().equals("0")) {
-            holder.txt_discount.setVisibility(View.GONE);
-        }
-
-        /*don't show discount for other book */
-        else {
             int discount = Integer.parseInt(data.get(position).getDiscount());
             holder.txt_discount.setText(DecimalFormatter.convert(discount) + "%");
+
         }
 
 
@@ -98,6 +95,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
         TextView txt_price;
         TextView txt_author;
         TextView txt_discount;
+        TextView txt_top;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
@@ -108,6 +106,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
             txt_finalPrice = itemView.findViewById(R.id.item_book_off_category_final_price);
             txt_price = itemView.findViewById(R.id.item_book_off_category_price);
             txt_discount = itemView.findViewById(R.id.item_book_off_category_discount);
+            txt_top = itemView.findViewById(R.id.item_book_off_head_txt);
 
             itemView.setOnClickListener(e -> listener.onCLick(data.get(getAdapterPosition())));
 

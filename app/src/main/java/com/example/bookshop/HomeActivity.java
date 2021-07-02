@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         defSystemLocale= Locale.getDefault().getLanguage();
         setContentView(R.layout.activity_home);
-        Toast.makeText(this, defSystemLocale, Toast.LENGTH_SHORT).show();
+
         initialize();
         HomeFragment homeFragment = new HomeFragment();
         setFragment(homeFragment);

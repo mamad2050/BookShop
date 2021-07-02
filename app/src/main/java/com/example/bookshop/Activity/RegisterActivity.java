@@ -2,39 +2,32 @@ package com.example.bookshop.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.request.RequestCoordinator;
 import com.example.bookshop.Api.ApiClient;
 import com.example.bookshop.Api.ApiInterface;
-import com.example.bookshop.Model.User;
+import com.example.bookshop.Model.Users;
 import com.example.bookshop.R;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class RegisterActivity extends AppCompatActivity {
 
 
     EditText usernameEditText, mailEditText, passwordEditText, phoneEditText;
+    TextView txt_login;
     Button registerBTN;
     ApiInterface request;
-    String baseUrl = "http://scusad-bookshoponline.fandogh.cloud/api/rest-auth/";
+
 
     private static final String TAG = "RegisterActivity";
 
@@ -44,7 +37,28 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         initialize();
-        register();
+
+
+        txt_login.setOnClickListener(event -> startActivity(new Intent(RegisterActivity.this, LoginActivity.class)));
+
+
+        registerBTN.setOnClickListener(v -> {
+
+
+            String username = usernameEditText.getText().toString().trim();
+            String email = mailEditText.getText().toString().trim();
+            String phone = phoneEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
+
+
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty()){
+                Toast.makeText(this, "لطفا همه فیلد هارا پر کنید", Toast.LENGTH_SHORT).show();
+            } else{
+                register(username, email, phone, password);
+            }
+
+        });
+
     }
 
     private void initialize() {
@@ -54,51 +68,41 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.registerActivity_edt_password);
         phoneEditText = findViewById(R.id.registerActivity_edt_phone);
         registerBTN = findViewById(R.id.registerActivity_btn);
-        request = ApiClient.getRetrofit(baseUrl).create(ApiInterface.class);
+        txt_login = findViewById(R.id.register_activity_txt_login);
+        request = ApiClient.getRetrofit().create(ApiInterface.class);
 
     }
 
-    private void register() {
+    private void register(String username, String email, String phone, String password) {
 
 
-        registerBTN.setOnClickListener(new View.OnClickListener() {
+        Call<Users> usersCall = request.registerCall(username,email, phone, password);
+        usersCall.enqueue(new Callback<Users>() {
             @Override
-            public void onClick(View v) {
+            public void onResponse(Call<Users> call, Response<Users> response) {
 
-                String username = usernameEditText.getText().toString().trim();
-                String email = mailEditText.getText().toString().trim();
-                String password1 = passwordEditText.getText().toString().trim();
-                String password2 = passwordEditText.getText().toString().trim();
-                String phone = phoneEditText.getText().toString().trim();
+                if (response.isSuccessful() && response.body().isStatus()) {
 
-                User user = new User(username, email, password1, password2);
+                    Toast.makeText(RegisterActivity.this, "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
 
-                Call<User>userCall = request.register(user);
-                String json = new Gson().toJson(user,User.class);
-                userCall.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
+                }else {
+                    Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
-                        if (!response.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Not Successful", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else{
+                }
 
-                            Toast.makeText(RegisterActivity.this, "ok", Toast.LENGTH_SHORT).show();
-                        }
+            }
 
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+                Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
 
+
     }
 }
+
+
+

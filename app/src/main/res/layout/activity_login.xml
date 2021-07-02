@@ -55,6 +55,7 @@
 
             <EditText
 
+                android:gravity="right"
                 android:id="@+id/loginActivity_edt_user"
                 style="@style/editTextStyle"
                 android:layout_width="match_parent"
@@ -66,6 +67,8 @@
 
             <EditText
 
+                android:inputType="textPassword"
+                android:gravity="right"
                 android:id="@+id/loginActivity_edt_password"
                 style="@style/editTextStyle"
                 android:layout_width="match_parent"
@@ -87,6 +90,7 @@
 
             <TextView
                 style="@style/titleStyle"
+                android:id="@+id/login_activity_txt_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
