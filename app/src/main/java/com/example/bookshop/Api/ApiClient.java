@@ -10,8 +10,8 @@ public class ApiClient {
 
 
     public static Retrofit retrofit = null;
-//    static String baseUrl = "http://192.168.1.165/book%20store/";
-    static String baseUrl = "http://192.168.43.237/book%20store/";
+    static String baseUrl = "http://192.168.1.165/book%20store/";
+//    static String baseUrl = "http://192.168.43.237/book%20store/";
 
     public static Retrofit getRetrofit() {
 

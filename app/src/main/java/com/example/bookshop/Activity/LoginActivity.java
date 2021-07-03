@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,7 +12,9 @@ import android.widget.Toast;
 
 import com.example.bookshop.Api.ApiClient;
 import com.example.bookshop.Api.ApiInterface;
+import com.example.bookshop.Global.MyPreferencesManager;
 import com.example.bookshop.HomeActivity;
+import com.example.bookshop.Model.UserData;
 import com.example.bookshop.Model.Users;
 import com.example.bookshop.R;
 
@@ -25,12 +28,22 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     ApiInterface request;
     EditText edt_username, edt_password;
+    MyPreferencesManager myPreferencesManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        myPreferencesManager = new MyPreferencesManager(this);
+
+
+        if (myPreferencesManager.isLoggedIn()) {
+
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            finish();
+
+        }
 
         initialize();
 
@@ -43,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             String username = edt_username.getText().toString().trim();
             String password = edt_password.getText().toString().trim();
 
-            login(username,password);
+            login(username, password);
 
 
         });
@@ -62,14 +75,16 @@ public class LoginActivity extends AppCompatActivity {
     private void login(String username, String password) {
 
 
-        Call<Users> usersCall = request.loginCall(username,password);
+        Call<Users> usersCall = request.loginCall(username, password);
         usersCall.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
 
                 if (response.isSuccessful() && response.body().isStatus()) {
 
-                   startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    UserData userData = response.body().getUserData();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    myPreferencesManager.saveUserData(userData);
 
                 } else {
 
