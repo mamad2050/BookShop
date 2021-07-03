@@ -12,15 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.bookshop.Activity.LoginActivity;
+import com.example.bookshop.Activity.QuestionActivity;
 import com.example.bookshop.Global.MyPreferencesManager;
 import com.example.bookshop.R;
 
 public class ProfileFragment extends Fragment {
 
     View view;
-    LinearLayout exit_layout;
+    LinearLayout exit_layout, question_layout, wish_layout, orders_layout, address_layout,myInfo_layout;
     TextView txt_username, txt_phone;
-MyPreferencesManager myPreferencesManager;
+    MyPreferencesManager myPreferencesManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,13 +39,23 @@ MyPreferencesManager myPreferencesManager;
         txt_phone.setText(myPreferencesManager.getUserData().get(MyPreferencesManager.PHONE));
 
 
-        exit_layout = view.findViewById(R.id.profile_exit);
+        exit_layout = view.findViewById(R.id.profile_fragment_exit_layout);
+        wish_layout = view.findViewById(R.id.profile_fragment_wishes_layout);
+        address_layout = view.findViewById(R.id.profile_fragment_address_layout);
+        myInfo_layout = view.findViewById(R.id.profile_fragment_myInfo_layout);
+        question_layout = view.findViewById(R.id.profile_fragment_question_layout);
+        orders_layout = view.findViewById(R.id.profile_fragment_orders_layout);
 
         exit_layout.setOnClickListener(event -> {
 
             myPreferencesManager.logout();
             startActivity(new Intent(getContext(), LoginActivity.class));
 
+        });
+
+        question_layout.setOnClickListener( event -> {
+
+            startActivity(new Intent(getContext(), QuestionActivity.class));
         });
 
 

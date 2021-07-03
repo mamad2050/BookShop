@@ -88,7 +88,7 @@ public class IntroActivity extends AppCompatActivity {
 
         btn_go.setOnClickListener( e -> startActivity(new Intent(IntroActivity.this,LoginActivity.class)));
 
-  
+
 
     }
 

@@ -21,6 +21,7 @@
 
 
         <LinearLayout
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
@@ -30,7 +31,6 @@
                 style="@style/toolbarTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_marginEnd="4dp"
                 android:text="در دسته " />
 
@@ -40,7 +40,6 @@
                 style="@style/toolbarTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -18,6 +18,7 @@ public class Constants {
     public static final String LINK_RELATE_BOOKS = "http://192.168.43.237/book%20store/getRelateBook.php";
        public static final String LINK_GET_ALL_BOOK = "http://192.168.43.237/book%20store/getAllBook.php";
        public static final String GET_INTRO ="http://192.168.43.237/book%20store/getIntro.php" ;
+       public static final String GET_QUESTIONS ="http://192.168.43.237/book%20store/getQuestion.php" ;
 */
 
 
@@ -35,4 +36,5 @@ public class Constants {
     public static final String LINK_RELATE_BOOKS = "http://192.168.1.165/book%20store/getRelateBook.php";
     public static final String LINK_GET_ALL_BOOK = "http://192.168.1.165/book%20store/getAllBook.php";
     public static final String GET_INTRO = "http://192.168.1.165/book%20store/getIntro.php";
+    public static final String GET_QUESTIONS = "http://192.168.1.165/book%20store/getQuestion.php";
 }

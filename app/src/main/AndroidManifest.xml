@@ -13,28 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookShop"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.IntroActivity">
+        <activity android:name=".Activity.QuestionActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
+        <activity android:name=".Activity.IntroActivity"/>
         <activity android:name=".Activity.SuccessfulRegisterActivity" />
         <activity android:name=".Activity.CompareBookActivity" />
         <activity android:name=".Activity.BookActivity" />
         <activity android:name=".Activity.DetailCategoryActivity" />
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.RegisterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activity.RegisterActivity"></activity>
         <activity android:name=".HomeActivity" />
     </application>
 
