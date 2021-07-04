@@ -65,6 +65,8 @@ public class BookActivity extends AppCompatActivity {
     TextView txt_publish_date;
     TextView txt_description;
     LinearLayout discount_parent;
+    TextView txt_show_all;
+    TextView txt_send_comment;
 
     /*relate books recyclerView*/
 
@@ -134,6 +136,28 @@ public class BookActivity extends AppCompatActivity {
         });
 
 
+        txt_show_all.setOnClickListener(v -> {
+
+            Intent intent = new Intent(BookActivity.this,CommentActivity.class);
+            intent.putExtra(Key.ID,book.getId());
+            intent.putExtra(Key.BOOK_NAME,book.getName());
+            intent.putExtra(Key.BOOK_IMG,book.getLink_img());
+            startActivity(intent);
+
+        });
+
+        txt_send_comment.setOnClickListener(v -> {
+
+
+            Intent intent = new Intent(BookActivity.this,SendCommentActivity.class);
+            intent.putExtra(Key.ID,book.getId());
+            intent.putExtra(Key.BOOK_NAME,book.getName());
+            intent.putExtra(Key.BOOK_IMG,book.getLink_img());
+            startActivity(intent);
+
+
+        });
+
 
     }
 
@@ -159,6 +183,8 @@ public class BookActivity extends AppCompatActivity {
         txt_discount = findViewById(R.id.activity_book_discount);
         txt_description = findViewById(R.id.book_activity_description);
         discount_parent = findViewById(R.id.book_activity_discount_parent);
+        txt_show_all = findViewById(R.id.book_activity_showAll);
+        txt_send_comment = findViewById(R.id.txt_send_comment);
 
         /*Initialize Relate Books recyclerView*/
         relatesRecyclerView = findViewById(R.id.book_activity_relates_recyclerview);

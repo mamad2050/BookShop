@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.example.bookshop.HomeActivity;
 import com.example.bookshop.Model.UserData;
 import com.example.bookshop.Model.Users;
 import com.example.bookshop.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -99,17 +101,17 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body().isStatus()) {
 
-                    UserData userData = response.body().getUserData();
-                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
-                    myPreferencesManager.saveUserData(userData);
-                    Log.e(TAG, "onResponse: "+response.body().getMessage() );
+//                    UserData userData = response.body().getUserData();
+//                    myPreferencesManager.saveUserData(userData);
+                    Toast.makeText(RegisterActivity.this, "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
 
-                }
+                    Handler handler = new Handler();
+                    handler.postDelayed(() -> startActivity(new Intent(RegisterActivity.this, LoginActivity.class)), 2000);
 
-                else {
+                } else {
 
                     Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "onResponse: "+response.body().getMessage() );
+                    Log.e(TAG, "onResponse: " + response.body().getMessage());
 
                 }
 

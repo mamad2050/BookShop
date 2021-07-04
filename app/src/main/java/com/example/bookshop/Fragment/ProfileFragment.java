@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
 
         myPreferencesManager = new MyPreferencesManager(getContext());
 
-        txt_username.setText(myPreferencesManager.getUserData().get(MyPreferencesManager.EMAIL));
+        txt_username.setText(myPreferencesManager.getUserData().get(MyPreferencesManager.USERNAME));
         txt_phone.setText(myPreferencesManager.getUserData().get(MyPreferencesManager.PHONE));
 
 
