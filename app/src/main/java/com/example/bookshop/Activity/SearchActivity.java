@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookshop.Adapter.AllBookAdapter;
 import com.example.bookshop.Global.Constants;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Book;
 import com.example.bookshop.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -80,7 +82,7 @@ public class SearchActivity extends AppCompatActivity {
             rdb_price_desc = view.findViewById(R.id.rdb_price_desc);
             rdb_discount = view.findViewById(R.id.rdb_discount);
 
-            switch (SET_CHECK_RDB){
+            switch (SET_CHECK_RDB) {
 
                 case RDB_NEW:
                     rdb_new.setChecked(true);
@@ -104,7 +106,7 @@ public class SearchActivity extends AppCompatActivity {
                 books.clear();
                 getResponse(Constants.LINK_GET_ALL_BOOK);
                 dialog.dismiss();
-               SET_CHECK_RDB = RDB_NEW;
+                SET_CHECK_RDB = RDB_NEW;
 
 
             });
@@ -146,6 +148,14 @@ public class SearchActivity extends AppCompatActivity {
 
             });
 
+
+        });
+        adapter.setListener(book -> {
+
+            Intent intent = new Intent(SearchActivity.this, BookActivity.class);
+            intent.putExtra(Key.ID, book.getId());
+            intent.putExtra(Key.CATEGORY_ID,book.getCategory_id());
+            startActivity(intent);
 
         });
 

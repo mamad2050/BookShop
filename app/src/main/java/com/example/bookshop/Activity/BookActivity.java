@@ -65,6 +65,7 @@ public class BookActivity extends AppCompatActivity {
     TextView txt_pages;
     TextView txt_sold;
     TextView txt_publish_date;
+    TextView txt_publisher;
     TextView txt_description;
     LinearLayout discount_parent;
     TextView txt_show_all;
@@ -194,6 +195,7 @@ public class BookActivity extends AppCompatActivity {
         discount_parent = findViewById(R.id.book_activity_discount_parent);
         txt_show_all = findViewById(R.id.book_activity_showAll);
         txt_send_comment = findViewById(R.id.txt_send_comment);
+        txt_publisher = findViewById(R.id.book_activity_book_publisher);
 
         /*Initialize Relate Books recyclerView*/
         relatesRecyclerView = findViewById(R.id.book_activity_relates_recyclerview);
@@ -262,6 +264,7 @@ public class BookActivity extends AppCompatActivity {
         txt_author_table.setText(book.getAuthor());
         txt_genre.setText(book.getGenre());
         txt_description.setText(book.getDescription());
+        txt_publisher.setText(book.getPublisher());
 
         int pages = Integer.parseInt(book.getPages());
         txt_pages.setText(DecimalFormatter.convert(pages));

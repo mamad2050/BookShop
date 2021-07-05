@@ -46,6 +46,7 @@ public class Constants {
     public static final String SORT_BY_DISCOUNT = "http://192.168.1.165/book%20store/sortByDiscountDesc.php";
     public static final String SORT_BY_PRICE_ASC = "http://192.168.1.165/book%20store/sortByPriceAsc.php";
     public static final String SORT_BY_PRICE_DESC = "http://192.168.1.165/book%20store/sortByPriceDesc.php";
+    public static final String GET_BOOK_PUBLISHER = "http://192.168.1.165/book%20store/getPublisherBook.php";
 
 
 

@@ -1,6 +1,7 @@
 package com.example.bookshop.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookshop.Activity.PublisherActivity;
+import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Publisher;
 import com.example.bookshop.R;
 
@@ -63,6 +66,16 @@ public class PublisherAdapter extends RecyclerView.Adapter<PublisherAdapter.Hold
 
             img_publisher = itemView.findViewById(R.id.item_publisher_img);
             title_publisher = itemView.findViewById(R.id.item_publisher_title);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PublisherActivity.class);
+                    intent.putExtra(Key.PUBLISHER_NAME,data.get(getAdapterPosition()).getName());
+                    intent.putExtra(Key.PUBLISHER_ID,data.get(getAdapterPosition()).getId());
+                    context.startActivity(intent);
+                }
+            });
 
 
         }

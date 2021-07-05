@@ -2,8 +2,16 @@ package com.example.bookshop.Model;
 
 public class Book {
 
-    private String id, category_id, name, link_img, price, discount, brand, final_price, author, pages, publish_date, sold, genre,description;
+    private String id, category_id, name, link_img, price, discount, brand, final_price, author,
+            pages, publish_date, sold, genre,description ,publisher ,publisher_id;
 
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public String getPublisher_id() {
+        return publisher_id;
+    }
 
     public String getId() {
         return id;

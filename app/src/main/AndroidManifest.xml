@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.SearchActivity"></activity>
+        <activity android:name=".Activity.PublisherActivity"></activity>
+        <activity android:name=".Activity.SearchActivity" />
         <activity android:name=".Activity.SendCommentActivity" />
         <activity android:name=".Activity.CommentActivity" />
-        <activity android:name=".Activity.QuestionActivity"></activity>
+        <activity android:name=".Activity.QuestionActivity" />
         <activity android:name=".Activity.IntroActivity" />
         <activity android:name=".Activity.SuccessfulRegisterActivity" />
         <activity android:name=".Activity.CompareBookActivity" />

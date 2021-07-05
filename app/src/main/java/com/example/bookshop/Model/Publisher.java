@@ -27,6 +27,10 @@ public class Publisher {
         return link_img;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setLink_img(String link_img) {
         this.link_img = link_img;
     }
