@@ -27,10 +27,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.bookshop.Adapter.BookAdapter;
+import com.example.bookshop.Adapter.CommentLimitAdapter;
 import com.example.bookshop.Global.Constants;
 import com.example.bookshop.Global.DecimalFormatter;
 import com.example.bookshop.Global.Key;
 import com.example.bookshop.Model.Book;
+import com.example.bookshop.Model.Comment;
 import com.example.bookshop.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
@@ -89,6 +91,12 @@ public class BookActivity extends AppCompatActivity {
     View layout_bottomSheet;
 
 
+    /*Limited Comments*/
+    RecyclerView commentRecyclerView;
+    CommentLimitAdapter commentLimitAdapter;
+    List<Comment> comments = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +107,7 @@ public class BookActivity extends AppCompatActivity {
 
         getSimilarProduct();
 
+        getCommentLimit();
         img_more.setOnClickListener(v -> {
 
             bottomSheetDialog = new BottomSheetDialog(BookActivity.this);
@@ -199,6 +208,16 @@ public class BookActivity extends AppCompatActivity {
         img_cart = findViewById(R.id.book_activity_cart_img);
         img_like = findViewById(R.id.book_activity_like_img);
         img_back = findViewById(R.id.book_activity_back_img);
+
+
+
+        /*comment limit*/
+
+        commentRecyclerView = findViewById(R.id.book_activity_comments_recyclerview);
+        commentRecyclerView.setHasFixedSize(true);
+        commentRecyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
+        commentLimitAdapter = new CommentLimitAdapter(this,comments);
+        commentRecyclerView.setAdapter(commentLimitAdapter);
 
     }
 
@@ -309,5 +328,42 @@ public class BookActivity extends AppCompatActivity {
         requestQueue.add(request);
 
     }
+
+    private void getCommentLimit() {
+
+
+        Response.Listener<String> listener = response -> {
+
+            Gson gson = new Gson();
+            Comment[] commentsArray = gson.fromJson(response, Comment[].class);
+
+            comments.addAll(Arrays.asList(commentsArray));
+            commentLimitAdapter.notifyDataSetChanged();
+
+        };
+
+        Response.ErrorListener errorListener = error -> {
+
+            Log.d("Error : ", error.getMessage() + "");
+
+        };
+
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_COMMENTS_LIMIT, listener, errorListener) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put(Key.ID, bundle.getString(Key.ID));
+                return map;
+
+            }
+        };
+        requestQueue.add(request);
+
+    }
+
+
+
 
 }

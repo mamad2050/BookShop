@@ -6,7 +6,7 @@
     android:layout_margin="8dp"
     app:cardBackgroundColor="@color/backgroundColor"
     app:cardCornerRadius="8dp"
-    app:cardElevation="8dp">
+    app:cardElevation="1dp">
 
 
     <RelativeLayout
@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:id="@+id/txt_title"
+            android:id="@+id/item_comment_limit_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -27,10 +27,10 @@
 
 
         <LinearLayout
-            android:id="@+id/layout_offer_positive"
+            android:id="@+id/item_comment_limit_layout_suggest_positive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/item_comment_txt_description"
+            android:layout_below="@id/item_comment_limit_txt_description"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:visibility="gone">
@@ -54,10 +54,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_offer_negative"
+            android:id="@+id/item_comment_limit_layout_suggest_negative"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/item_comment_txt_description"
+            android:layout_below="@id/item_comment_limit_txt_description"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:visibility="gone">
@@ -67,7 +67,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_baseline_thumb_down_24"
-                app:tint="@color/colorPrimary" />
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,10 +82,10 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/item_comment_txt_description"
+            android:id="@+id/item_comment_limit_txt_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_title"
+            android:layout_below="@id/item_comment_limit_txt_title"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="4dp"
             android:maxLines="2"
@@ -96,7 +96,7 @@
 
 
         <TextView
-            android:id="@+id/txt_date"
+            android:id="@+id/item_comment_limit_txt_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/txt_date"
+            android:layout_toEndOf="@id/item_comment_limit_txt_date"
             android:orientation="horizontal">
 
             <View
@@ -121,7 +121,7 @@
 
 
             <TextView
-                android:id="@+id/txt_user_email"
+                android:id="@+id/item_comment_limit_txt_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

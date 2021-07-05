@@ -1,7 +1,6 @@
 package com.example.bookshop.Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookshop.Model.Comment;
 import com.example.bookshop.R;
-import com.google.android.material.transition.Hold;
 
 import java.util.List;
 
@@ -92,9 +90,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.Holder> 
             txt_date = itemView.findViewById(R.id.item_comment_txt_date);
             txt_rating = itemView.findViewById(R.id.item_comment_txt_rating);
             txt_username = itemView.findViewById(R.id.item_comment_txt_username);
-            txt_description = itemView.findViewById(R.id.item_comment_txt_description);
+            txt_description = itemView.findViewById(R.id.item_comment_limit_txt_description);
             txt_title = itemView.findViewById(R.id.item_comment_txt_title);
-            txt_date = itemView.findViewById(R.id.item_comment_txt_date);
             txt_positive = itemView.findViewById(R.id.item_comment_txt_positive);
             txt_negative = itemView.findViewById(R.id.item_comment_txt_negative);
             layout_positive = itemView.findViewById(R.id.item_comment_layout_txt_positive);

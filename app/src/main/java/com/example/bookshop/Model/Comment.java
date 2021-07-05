@@ -4,7 +4,7 @@ public class Comment {
 
 
     private String id,id_product,username_user,description, rating, positive
-            ,negative,confirmation,date,offer, title;
+            ,negative,confirmation,date, suggest, title;
 
 
     public String getId() {
@@ -87,11 +87,11 @@ public class Comment {
         this.date = date;
     }
 
-    public String getOffer() {
-        return offer;
+    public String getSuggest() {
+        return suggest;
     }
 
-    public void setOffer(String offer) {
-        this.offer = offer;
+    public void setSuggest(String suggest) {
+        this.suggest = suggest;
     }
 }

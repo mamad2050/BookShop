@@ -20,6 +20,7 @@ public class Constants {
        public static final String GET_INTRO ="http://192.168.43.237/book%20store/getIntro.php" ;
        public static final String GET_QUESTIONS ="http://192.168.43.237/book%20store/getQuestion.php" ;
        public static final String GET_COMMENTS ="http://192.168.43.237/book%20store/getComment.php" ;
+       public static final String GET_COMMENTS_LIMIT ="http://192.168.43.237/book%20store/getCommentLimit.php" ;
 */
 
 
@@ -39,4 +40,5 @@ public class Constants {
     public static final String GET_INTRO = "http://192.168.1.165/book%20store/getIntro.php";
     public static final String GET_QUESTIONS = "http://192.168.1.165/book%20store/getQuestion.php";
     public static final String GET_COMMENTS = "http://192.168.1.165/book%20store/getComment.php";
+    public static final String GET_COMMENTS_LIMIT = "http://192.168.1.165/book%20store/getCommentLimit.php";
 }
