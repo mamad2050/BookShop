@@ -16,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Adapter.AllBookAdapter;
 import com.example.bookshop.Adapter.BookOfferCategoryAdapter;
 import com.example.bookshop.Global.Constants;
 import com.example.bookshop.Global.Key;
@@ -36,7 +37,7 @@ public class CompareBookActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     List<Book> relateBooks = new ArrayList<>();
     RecyclerView recyclerView;
-    BookOfferCategoryAdapter adapter;
+    AllBookAdapter adapter;
 
 
     @Override
@@ -66,7 +67,7 @@ public class CompareBookActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.compare_book_activity_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new BookOfferCategoryAdapter(this, relateBooks);
+        adapter = new AllBookAdapter(this, relateBooks);
         recyclerView.setAdapter(adapter);
 
 
@@ -86,11 +87,7 @@ public class CompareBookActivity extends AppCompatActivity {
 
         };
 
-        Response.ErrorListener errorListener = error -> {
-
-            Log.d("Error : ", error.getMessage() + "");
-
-        };
+        Response.ErrorListener errorListener = error -> Log.d("Error : ", error.getMessage() + "");
 
         StringRequest request = new StringRequest(Request.Method.POST, Constants.LINK_RELATE_BOOKS, listener, errorListener) {
 

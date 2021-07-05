@@ -15,6 +15,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bookshop.Adapter.AllBookAdapter;
 import com.example.bookshop.Adapter.BookOfferCategoryAdapter;
 import com.example.bookshop.Global.Constants;
 import com.example.bookshop.Model.Book;
@@ -31,7 +32,7 @@ public class SearchFragment extends Fragment {
     private static final String TAG = "SearchFragment";
     View view;
     RecyclerView recyclerView;
-    BookOfferCategoryAdapter adapter;
+    AllBookAdapter adapter;
     List<Book> books = new ArrayList<>();
     RequestQueue requestQueue;
 
@@ -43,7 +44,7 @@ public class SearchFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView_search);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new BookOfferCategoryAdapter(getContext(), books);
+        adapter = new AllBookAdapter(getContext(), books);
         recyclerView.setAdapter(adapter);
         requestQueue = Volley.newRequestQueue(getContext());
 

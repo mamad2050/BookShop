@@ -20,11 +20,12 @@ import com.example.bookshop.R;
 
 import java.util.List;
 
-public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCategoryAdapter.Holder> {
+public class AllBookAdapter extends RecyclerView.Adapter<AllBookAdapter.Holder> {
+
 
     Context context;
     List<Book> data;
-    onItemClickedListener listener;
+    AllBookAdapter.onItemClickedListener listener;
 
     public interface onItemClickedListener {
 
@@ -36,7 +37,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
         this.listener = listener;
     }
 
-    public BookOfferCategoryAdapter(Context context, List<Book> data) {
+    public AllBookAdapter(Context context, List<Book> data) {
         this.context = context;
         this.data = data;
     }
@@ -44,12 +45,12 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_off_category, parent, false));
+        return new AllBookAdapter.Holder(LayoutInflater.from(context).inflate(R.layout.item_book_all, parent, false));
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-
         int final_price = Integer.parseInt(data.get(position).getFinal_price());
 
         holder.txt_finalPrice.setText(DecimalFormatter.convert(final_price));
@@ -64,7 +65,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
 
             holder.txt_price.setVisibility(View.INVISIBLE);
             holder.txt_discount.setVisibility(View.INVISIBLE);
-            holder.txt_top.setText("");
+
 
         } else {
 
@@ -77,8 +78,6 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
             holder.txt_discount.setText(DecimalFormatter.convert(discount) + "%");
 
         }
-
-
     }
 
     @Override
@@ -94,10 +93,12 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
         TextView txt_price;
         TextView txt_author;
         TextView txt_discount;
-        TextView txt_top;
+
+
 
         public Holder(@NonNull View itemView) {
             super(itemView);
+
 
             img_book = itemView.findViewById(R.id.item_book_all_img);
             txt_name = itemView.findViewById(R.id.item_book_all_name);
@@ -105,7 +106,7 @@ public class BookOfferCategoryAdapter extends RecyclerView.Adapter<BookOfferCate
             txt_finalPrice = itemView.findViewById(R.id.item_book_all_final_price);
             txt_price = itemView.findViewById(R.id.item_book_off_all_price);
             txt_discount = itemView.findViewById(R.id.item_book_all_discount);
-            txt_top = itemView.findViewById(R.id.item_book_off_head_txt);
+
 
             itemView.setOnClickListener(e -> listener.onCLick(data.get(getAdapterPosition())));
 

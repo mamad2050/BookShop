@@ -13,11 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.SendCommentActivity"></activity>
+        <activity android:name=".Activity.SearchActivity"></activity>
+        <activity android:name=".Activity.SendCommentActivity" />
         <activity android:name=".Activity.CommentActivity" />
-        <activity android:name=".Activity.QuestionActivity">
-
-        </activity>
+        <activity android:name=".Activity.QuestionActivity"></activity>
         <activity android:name=".Activity.IntroActivity" />
         <activity android:name=".Activity.SuccessfulRegisterActivity" />
         <activity android:name=".Activity.CompareBookActivity" />
@@ -25,14 +24,12 @@
         <activity android:name=".Activity.DetailCategoryActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".HomeActivity" >
-
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

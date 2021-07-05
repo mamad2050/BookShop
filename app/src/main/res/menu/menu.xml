@@ -20,10 +20,10 @@
         android:id="@+id/nav_shopping_cart"
         android:title="@string/nav_shopping_cart" />
 
-    <item
-        android:icon="@drawable/search_selector"
-        android:id="@+id/nav_search"
-        android:title="@string/nav_search" />
+<!--    <item-->
+<!--        android:icon="@drawable/search_selector"-->
+<!--        android:id="@+id/nav_search"-->
+<!--        android:title="@string/nav_search" />-->
 
 
     <item
