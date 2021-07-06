@@ -15,21 +15,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookshop.Activity.BookActivity;
+import com.example.bookshop.Activity.CartActivity;
 import com.example.bookshop.Activity.SearchActivity;
+import com.example.bookshop.Api.ApiClient;
+import com.example.bookshop.Api.ApiInterface;
 import com.example.bookshop.Fragment.CategoryFragment;
 import com.example.bookshop.Fragment.HomeFragment;
 import com.example.bookshop.Fragment.ProfileFragment;
 import com.example.bookshop.Fragment.SearchFragment;
+import com.example.bookshop.Global.MyPreferencesManager;
+import com.example.bookshop.Model.Message;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
     public static String defSystemLocale;
-    TextView toolbar_title;
-    ImageView imageView;
+    TextView toolbar_title, txt_count;
+    ImageView imageView, img_cart;
+    ApiInterface request;
+    MyPreferencesManager myPreferencesManager;
+    String username;
 
     @Override
 
@@ -37,6 +49,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         defSystemLocale = Locale.getDefault().getLanguage();
         setContentView(R.layout.activity_home);
+
+        request = ApiClient.getRetrofit().create(ApiInterface.class);
+        myPreferencesManager = new MyPreferencesManager(this);
+
+        username = myPreferencesManager.getUserData().get(MyPreferencesManager.USERNAME);
 
         initialize();
         HomeFragment homeFragment = new HomeFragment();
@@ -47,6 +64,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void initialize() {
 
+
+        txt_count = findViewById(R.id.home_activity_txt_count);
+        img_cart = findViewById(R.id.home_activity_cart_img);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         toolbar_title = findViewById(R.id.home_activity_toolbar_title);
         toolbar_title.setText(R.string.app_name);
@@ -56,6 +76,39 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         imageView.setOnClickListener(event -> {
 
             startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+        });
+
+
+        img_cart.setOnClickListener(e -> {
+            startActivity(new Intent(HomeActivity.this, CartActivity.class));
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getCountCart(myPreferencesManager.getUserData().get(MyPreferencesManager.USERNAME));
+    }
+
+    private void getCountCart(String username) {
+
+        Call<Message> call = request.getCountCart(username);
+        call.enqueue(new Callback<Message>() {
+            @Override
+            public void onResponse(Call<Message> call, retrofit2.Response<Message> response) {
+
+                if (!response.body().getMessage().equals("0")) {
+                    txt_count.setVisibility(View.VISIBLE);
+                    txt_count.setText(response.body().getMessage());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Message> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
 
     }

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.bookshop.Activity.FavoriteActivity;
 import com.example.bookshop.Activity.LoginActivity;
 import com.example.bookshop.Activity.QuestionActivity;
 import com.example.bookshop.Global.MyPreferencesManager;
@@ -19,7 +20,7 @@ import com.example.bookshop.R;
 public class ProfileFragment extends Fragment {
 
     View view;
-    LinearLayout exit_layout, question_layout, wish_layout, orders_layout, address_layout,myInfo_layout;
+    LinearLayout exit_layout, question_layout, wish_layout, orders_layout, address_layout, myInfo_layout;
     TextView txt_username, txt_phone;
     MyPreferencesManager myPreferencesManager;
 
@@ -53,11 +54,13 @@ public class ProfileFragment extends Fragment {
 
         });
 
-        question_layout.setOnClickListener( event -> {
+        question_layout.setOnClickListener(event -> {
 
             startActivity(new Intent(getContext(), QuestionActivity.class));
         });
 
+
+        wish_layout.setOnClickListener(e -> startActivity(new Intent(getContext(), FavoriteActivity.class)));
 
         return view;
 

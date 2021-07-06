@@ -1,13 +1,18 @@
 package com.example.bookshop.Api;
 
+import com.example.bookshop.Model.Cart;
 import com.example.bookshop.Model.Message;
 import com.example.bookshop.Model.Users;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -31,5 +36,19 @@ public interface ApiInterface {
                                   @Field("negative") String negative,
                                   @Field("title") String title,
                                   @Field("date") String date);
+
+
+
+    @FormUrlEncoded
+    @POST("sendToCart.php")
+    Call<Message> sendToCartCall(@Field("id_book") String id_book,
+                                  @Field("username_user") String username_user);
+
+
+    @GET("getCountCart.php")
+    Call<Message> getCountCart(@Query("username_user") String username_user);
+
+    @GET("getListCart.php")
+    Call<List<Cart>> getListCart(@Query("username_user") String username_user);
 
 }

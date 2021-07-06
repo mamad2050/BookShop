@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.PublisherActivity"></activity>
+        <activity android:name=".Activity.CartActivity"></activity>
+        <activity android:name=".Activity.FavoriteActivity" />
+        <activity android:name=".Activity.PublisherActivity" />
         <activity android:name=".Activity.SearchActivity" />
         <activity android:name=".Activity.SendCommentActivity" />
         <activity android:name=".Activity.CommentActivity" />

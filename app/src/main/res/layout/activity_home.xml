@@ -35,6 +35,33 @@
             android:text="@string/online_book_store" />
 
 
+        <ImageView
+            android:id="@+id/home_activity_cart_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shopping_cart"
+            android:backgroundTint="@color/black" />
+
+        <TextView
+            android:id="@+id/home_activity_txt_count"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_toStartOf="@id/home_activity_cart_img"
+            android:background="@drawable/bg_txt_count"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
     </RelativeLayout>
 
 
