@@ -7,6 +7,8 @@ import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,12 +22,23 @@ import com.example.bookshop.R;
 
 import java.util.List;
 
-public class AllBookAdapter extends RecyclerView.Adapter<AllBookAdapter.Holder> {
+public class AllBookAdapter extends RecyclerView.Adapter<AllBookAdapter.Holder> implements Filterable {
 
 
     Context context;
-    List<Book> data;
+    public List<Book> data;
+    com.example.bookshop.Global.Filter filter;
     AllBookAdapter.onItemClickedListener listener;
+    List<Book> data_filter;
+
+    @Override
+    public Filter getFilter() {
+
+        if (filter==null){
+            filter = new com.example.bookshop.Global.Filter(this , data);
+        }
+        return filter;
+    }
 
     public interface onItemClickedListener {
 
@@ -40,6 +53,7 @@ public class AllBookAdapter extends RecyclerView.Adapter<AllBookAdapter.Holder> 
     public AllBookAdapter(Context context, List<Book> data) {
         this.context = context;
         this.data = data;
+        this.data_filter =  data ;
     }
 
     @NonNull
@@ -84,6 +98,8 @@ public class AllBookAdapter extends RecyclerView.Adapter<AllBookAdapter.Holder> 
     public int getItemCount() {
         return data.size();
     }
+
+
 
     class Holder extends RecyclerView.ViewHolder {
 

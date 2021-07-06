@@ -23,11 +23,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Holder> {
 
     Context context;
     List<Cart> carts;
+    deleteBook deleteBook;
+    priceAndCountBook priceAndCountBook;
+
+    public CartAdapter(Context context, List<Cart> carts, CartAdapter.deleteBook deleteBook, CartAdapter.priceAndCountBook priceAndCountBook) {
+        this.context = context;
+        this.carts = carts;
+        this.deleteBook = deleteBook;
+        this.priceAndCountBook = priceAndCountBook;
+    }
 
     public CartAdapter(Context context, List<Cart> carts) {
         this.context = context;
         this.carts = carts;
     }
+
+    public interface deleteBook {
+        void ItemDeleteBook(Cart cart);
+    }
+
+    public interface priceAndCountBook {
+        void ItemPriceAndCount(String price, String count);
+    }
+
 
     @NonNull
     @Override
@@ -44,6 +62,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Holder> {
 
         int price = Integer.parseInt(carts.get(position).getFinal_price());
         holder.txt_final_price.setText(DecimalFormatter.convert(price));
+
+
+        holder.layout_delete.setOnClickListener(event -> {
+
+            deleteBook.ItemDeleteBook(carts.get(position));
+
+        });
+
+        priceAndCountBook.ItemPriceAndCount(carts.get(position).getFinal_price(), carts.size() + "");
+
+
     }
 
     @Override
@@ -68,5 +97,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Holder> {
             layout_delete = itemView.findViewById(R.id.lay_delete_cart);
         }
     }
+
+    public void getCartForDelete(Cart cart) {
+
+        int index = carts.indexOf(cart);
+        carts.remove(index);
+        notifyDataSetChanged();
+
+    }
+
 
 }

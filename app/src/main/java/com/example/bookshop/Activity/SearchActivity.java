@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -31,6 +34,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     BottomSheetDialog dialog;
+    EditText edt_search;
     private static final String TAG = "Search";
     LinearLayout layout_sort, layout_filter;
     RecyclerView recyclerView;
@@ -57,6 +61,8 @@ public class SearchActivity extends AppCompatActivity {
 
         layout_filter = findViewById(R.id.layout_filter);
         layout_sort = findViewById(R.id.layout_sort);
+
+        edt_search = findViewById(R.id.edt_search);
 
 
         recyclerView = findViewById(R.id.recyclerView_search);
@@ -159,6 +165,23 @@ public class SearchActivity extends AppCompatActivity {
 
         });
 
+
+        edt_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.bookshop.Activity.FavoriteActivity;
 import com.example.bookshop.Activity.LoginActivity;
+import com.example.bookshop.Activity.OrderActivity;
 import com.example.bookshop.Activity.QuestionActivity;
 import com.example.bookshop.Global.MyPreferencesManager;
 import com.example.bookshop.R;
@@ -62,7 +63,11 @@ public class ProfileFragment extends Fragment {
 
         wish_layout.setOnClickListener(e -> startActivity(new Intent(getContext(), FavoriteActivity.class)));
 
+        orders_layout.setOnClickListener(v -> startActivity(new Intent(getContext(), OrderActivity.class)));
+
+
         return view;
+
 
 
     }

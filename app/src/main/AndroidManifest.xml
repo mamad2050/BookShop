@@ -13,27 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.CartActivity"></activity>
+        <activity android:name=".Activity.OrderActivity"></activity>
+        <activity android:name=".Activity.SuccessPayActivity" />
+        <activity android:name=".Activity.AddressActivity" />
+        <activity android:name=".Activity.CartActivity" />
         <activity android:name=".Activity.FavoriteActivity" />
         <activity android:name=".Activity.PublisherActivity" />
         <activity android:name=".Activity.SearchActivity" />
         <activity android:name=".Activity.SendCommentActivity" />
         <activity android:name=".Activity.CommentActivity" />
         <activity android:name=".Activity.QuestionActivity" />
-        <activity android:name=".Activity.IntroActivity" />
-        <activity android:name=".Activity.SuccessfulRegisterActivity" />
-        <activity android:name=".Activity.CompareBookActivity" />
-        <activity android:name=".Activity.BookActivity" />
-        <activity android:name=".Activity.DetailCategoryActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".Activity.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.SuccessfulRegisterActivity" />
+        <activity android:name=".Activity.CompareBookActivity" />
+        <activity android:name=".Activity.BookActivity" />
+        <activity android:name=".Activity.DetailCategoryActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>

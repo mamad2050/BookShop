@@ -104,8 +104,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_2"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+       android:layout_toEndOf="@id/item_cart_img"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp">
 
         <TextView
@@ -130,11 +131,13 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_marginStart="32dp"
         android:id="@+id/lay_delete_cart"
         android:layout_width="wrap_content"
         android:layout_below="@id/price_layout"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

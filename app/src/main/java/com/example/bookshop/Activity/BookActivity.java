@@ -237,6 +237,7 @@ public class BookActivity extends AppCompatActivity {
                 favorite.final_price = book.getFinal_price();
                 favorite.category_id = book.getCategory_id();
                 favorite.id_book = bundle.getString(Key.ID);
+                favorite.add_to_favorite = 1;
 
 
                 IMG_FAVORITE = INSERT;
@@ -259,6 +260,7 @@ public class BookActivity extends AppCompatActivity {
                 favorite.final_price = book.getFinal_price();
                 favorite.category_id = book.getCategory_id();
                 favorite.id_book = book.getId();
+                favorite.add_to_favorite = 2;
 
                 favoriteRepository.DeleteFavorite(favorite);
             }
@@ -289,6 +291,8 @@ public class BookActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getCountCart(myPreferencesManager.getUserData().get(MyPreferencesManager.USERNAME));
+
+        getCommentLimit();
     }
 
     private void getCountCart(String username) {
@@ -337,6 +341,9 @@ public class BookActivity extends AppCompatActivity {
         });
 
     }
+
+
+
 
     private void initDatabaseRoom() {
 
@@ -509,6 +516,7 @@ public class BookActivity extends AppCompatActivity {
 
     private void getCommentLimit() {
 
+        comments.clear();
 
         Response.Listener<String> listener = response -> {
 

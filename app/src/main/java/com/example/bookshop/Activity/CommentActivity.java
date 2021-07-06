@@ -39,7 +39,7 @@ public class CommentActivity extends AppCompatActivity {
     ImageView img_book;
     TextView txt_book;
     Bundle bundle;
-   LinearLayout send;
+    LinearLayout send;
     RequestQueue requestQueue;
     List<Comment> comments = new ArrayList<>();
     CommentAdapter commentAdapter;
@@ -63,10 +63,10 @@ public class CommentActivity extends AppCompatActivity {
 
         send.setOnClickListener(event -> {
 
-            Intent intent = new Intent(CommentActivity.this,SendCommentActivity.class);
+            Intent intent = new Intent(CommentActivity.this, SendCommentActivity.class);
             intent.putExtra(Key.ID, bundle.getString(Key.ID));
-            intent.putExtra(Key.BOOK_NAME,bundle.getString(Key.BOOK_NAME));
-            intent.putExtra(Key.BOOK_IMG,bundle.getString(Key.BOOK_IMG));
+            intent.putExtra(Key.BOOK_NAME, bundle.getString(Key.BOOK_NAME));
+            intent.putExtra(Key.BOOK_IMG, bundle.getString(Key.BOOK_IMG));
             startActivity(intent);
 
 
@@ -81,17 +81,17 @@ public class CommentActivity extends AppCompatActivity {
     private void getComment(String id) {
 
 
-
+        comments.clear();
         recyclerView = findViewById(R.id.activity_comment_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         commentAdapter = new CommentAdapter(this, comments);
         recyclerView.setAdapter(commentAdapter);
 
-        Response.Listener <String> listener = response -> {
+        Response.Listener<String> listener = response -> {
 
             Gson gson = new Gson();
-            Comment[] commentsArray = gson.fromJson( response, Comment[].class);
+            Comment[] commentsArray = gson.fromJson(response, Comment[].class);
 
             comments.addAll(Arrays.asList(commentsArray));
             commentAdapter.notifyDataSetChanged();

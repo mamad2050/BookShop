@@ -55,9 +55,11 @@ public class FavoriteActivity extends AppCompatActivity {
 
                     adapter = new FavoriteAdapter(FavoriteActivity.this,favorites);
 
+                    recyclerViewFavorite.setAdapter(adapter);
 
                 }));
-        recyclerViewFavorite.setAdapter(adapter);
+
+
     }
 
 

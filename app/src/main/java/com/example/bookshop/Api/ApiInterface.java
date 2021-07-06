@@ -51,4 +51,9 @@ public interface ApiInterface {
     @GET("getListCart.php")
     Call<List<Cart>> getListCart(@Query("username_user") String username_user);
 
+
+
+    @GET("deleteCart.php")
+    Call<Message> deleteCart(@Query("cart_id") String cart_id);
+
 }
