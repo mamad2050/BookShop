@@ -15,7 +15,7 @@ while ($row = $stmt ->fetch(PDO::FETCH_ASSOC)) {
   // code...
 }
 
-$query2 ="SELECT * FROM comment WHERE  id_book =:id  AND confirmation = 1 LIMIT 4";
+$query2 ="SELECT * FROM comment WHERE  id_book =:id ";
 $stmt2 =$connection ->prepare($query2);
 $stmt2 ->bindParam(":id",$record["id"]);
 $stmt2 ->execute();

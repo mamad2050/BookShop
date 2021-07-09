@@ -3,7 +3,7 @@
 include 'connect.php';
 
 
-$query2 = " SELECT * FROM book ";
+$query2 = " SELECT * FROM book ORDER BY price ASC ";
 $stmt2 = $connection->prepare($query2);
 $stmt2->execute();
 

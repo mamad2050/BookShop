@@ -34,6 +34,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $prod['pages'] = $row['pages'];
     $prod['genre'] = $row['genre'];
     $prod['description'] = $row['description'];
+    $prod['publisher_id'] = $row['publisher_id'];
+    $prod['publisher'] = $row['publisher'];    
+
 
     $books[] = $prod;
 
